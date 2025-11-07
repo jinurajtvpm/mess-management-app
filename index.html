@@ -1770,48 +1770,146 @@
         }
 
         // NEW: Vertical layout for today's demand
-    // Create rows with merged type cells
-for (const type in demandItems) {
-    if (demandItems[type].length > 0) {
-        const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
-        const rowCount = demandItems[type].length;
+     function displayTodayDemand(demands) {
+    const today = getToday();
+    const todayDemands = demands.filter(demand => demand.date === today);
+    const todayDemandContent = document.getElementById('today-demand-content');
+    
+    // Sort demands by creation time to find the latest
+    const sortedDemands = [...todayDemands].sort((a, b) => {
+        const timeA = a.createdAt ? a.createdAt.toDate().getTime() : 0;
+        const timeB = b.createdAt ? b.createdAt.toDate().getTime() : 0;
+        return timeB - timeA; // Latest first
+    });
+    
+    const latestDemandId = sortedDemands.length > 0 ? sortedDemands[0].id : null;
+    
+    // Group demands by user
+    const userDemands = {};
+    todayDemands.forEach(demand => {
+        if (!userDemands[demand.user]) {
+            userDemands[demand.user] = [];
+        }
+        userDemands[demand.user].push(demand);
+    });
+    
+    todayDemandContent.innerHTML = '';
+    
+    if (Object.keys(userDemands).length === 0) {
+        todayDemandContent.innerHTML = '<p style="text-align:center; padding:10px;">No demands for today.</p>';
+        return;
+    }
+    
+    for (const user in userDemands) {
+        const userTile = document.createElement('div');
+        userTile.className = 'user-tile';
         
-        // First row with type label and rowspan
-        demandHTML += `
-            <tr>
-                <td rowspan="${rowCount}" class="type-cell">${typeLabel}</td>
-                <td class="menu-cell">${demandItems[type][0].menu}</td>
-                <td class="action-cell">
-                    <div class="action-cell">
-                        <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][0].id}')" title="Edit">
-                            <i class="fas fa-edit"></i>
-                        </button>
-                        <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][0].id}')" title="Delete">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                </td>
-            </tr>
+        // Check if this user tile contains the latest demand
+        // const hasLatestDemand = userDemands[user].some(demand => demand.id === latestDemandId);
+        // if (hasLatestDemand) {
+           //  userTile.classList.add('highlight-latest');
+       // }
+        
+        let demandHTML = `
+            <div class="user-tile-header">
+                <h4>${user}</h4>
+                <span>${formatDate(today)}</span>
+            </div>
+            <table class="vertical-demand-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th class="menu-column">Menu</th>
+                        <th class="action-column">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
         `;
         
-        // Remaining rows for the same type (without type cell)
-        for (let i = 1; i < demandItems[type].length; i++) {
+        // Group demands by type
+        const demandItems = {
+            breakfast: [],
+            lunch: [],
+            dinner: [],
+            other: []
+        };
+        
+        // Group demands by type
+        userDemands[user].forEach(demand => {
+            if (demandItems[demand.type]) {
+                demandItems[demand.type].push(demand);
+            }
+        });
+        
+        // Create rows with merged type cells
+        for (const type in demandItems) {
+            if (demandItems[type].length > 0) {
+                const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
+                const rowCount = demandItems[type].length;
+                
+                // First row with type label and rowspan
+                const isLatestRow = demandItems[type][0].id === latestDemandId;
+                const rowClass = isLatestRow ? 'highlight-row' : '';
+                
+                demandHTML += `
+                    <tr class="${rowClass}">
+                        <td rowspan="${rowCount}" class="type-cell">${typeLabel}</td>
+                        <td class="menu-cell">${demandItems[type][0].menu}</td>
+                        <td class="action-cell">
+                            <div class="action-cell">
+                                <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][0].id}')" title="Edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][0].id}')" title="Delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+                
+                // Remaining rows for the same type (without type cell)
+                for (let i = 1; i < demandItems[type].length; i++) {
+                    const isLatestSubRow = demandItems[type][i].id === latestDemandId;
+                    const subRowClass = isLatestSubRow ? 'highlight-row' : '';
+                    
+                    demandHTML += `
+                        <tr class="${subRowClass}">
+                            <td class="menu-cell">${demandItems[type][i].menu}</td>
+                            <td class="action-cell">
+                                <div class="action-cell">
+                                    <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][i].id}')" title="Edit">
+                                        <i class="fas fa-edit"></i>
+                                    </button>
+                                    <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][i].id}')" title="Delete">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }
+            }
+        }
+        
+        // Add remarks row if any
+        const remarks = userDemands[user].filter(d => d.remarks).map(d => d.remarks);
+        if (remarks.length > 0) {
             demandHTML += `
                 <tr>
-                    <td class="menu-cell">${demandItems[type][i].menu}</td>
-                    <td class="action-cell">
-                        <div class="action-cell">
-                            <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][i].id}')" title="Edit">
-                                <i class="fas fa-edit"></i>
-                            </button>
-                            <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][i].id}')" title="Delete">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </td>
+                    <td>Remarks</td>
+                    <td class="menu-cell" colspan="2">${remarks.join(', ')}</td>
                 </tr>
             `;
         }
+        
+        demandHTML += `
+                </tbody>
+            </table>
+        `;
+        
+        userTile.innerHTML = demandHTML;
+        todayDemandContent.appendChild(userTile);
     }
 }
 function deleteUserDemandsByType(user, date, type) {
