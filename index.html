@@ -375,31 +375,27 @@
         }
         
         /* Vertical demand table styling */
-      .vertical-demand-table {
+  .vertical-demand-table {
     width: 100%;
     margin-top: 8px;
     font-size: 12px;
     border-collapse: collapse;
     border: 1px solid #e2e8f0;
-    table-layout: fixed;
 }
 
 .vertical-demand-table th {
     background: var(--secondary);
-    padding: 6px 4px;
+    padding: 6px 3px;
     text-align: center;
     border: 1px solid #e2e8f0;
     font-weight: 600;
+    font-size: 11px;
 }
 
 .vertical-demand-table td {
-    padding: 4px 4px;
+    padding: 4px 3px;
     vertical-align: middle;
     border: 1px solid #e2e8f0;
-}
-
-.vertical-demand-table tr {
-    height: 32px;
 }
 
 .vertical-demand-table .type-cell {
@@ -408,30 +404,42 @@
     text-align: center;
     border-right: 2px solid #cbd5e1;
     vertical-align: middle;
-    width: 20%;
+    max-width: 18%;
     padding: 4px 2px;
+    font-size: 11px;
 }
 
 .vertical-demand-table .menu-cell {
     padding: 4px 6px;
-    width: 70%;
+    width: 65%;
     border-right: 1px solid #e2e8f0;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    font-size: 11px;
 }
 
 .vertical-demand-table .action-cell {
     text-align: center;
-    white-space: nowrap;
-    width: 10%;
-    padding: 2px !important;
+    width: 17%;
+    padding: 2px 5% !important;
 }
 
-.action-cell {
+.vertical-demand-table .action-cell .action-cell {
     display: flex;
-    gap: 2px;
+    gap: 3px;
     justify-content: center;
-    flex-wrap: nowrap;
+    align-items: center;
+    padding: 0 !important;
+}
+
+.vertical-demand-table .action-cell .icon-btn {
+    padding: 3px;
+    font-size: 11px;
+    min-width: 22px;
+    min-height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .highlight-row {
@@ -439,6 +447,7 @@
     border-left: 3px solid var(--accent-yellow) !important;
     font-weight: 600;
 }
+
         
         .multi-select {
             height: 80px;
@@ -657,37 +666,41 @@
                 min-width: 100%;
             }
             
-            .vertical-demand-table {
-        font-size: 11px;
+          .vertical-demand-table {
+        font-size: 10px;
     }
     
-    .vertical-demand-table th,
+    .vertical-demand-table th {
+        padding: 4px 2px;
+        font-size: 10px;
+    }
+    
     .vertical-demand-table td {
         padding: 3px 2px;
     }
     
     .vertical-demand-table .type-cell {
-        width: 22%;
+        width: 20%;
         padding: 3px 1px;
         font-size: 10px;
     }
     
     .vertical-demand-table .menu-cell {
-        width: 60%;
+        width: 55%;
         padding: 3px 4px;
-        font-size: 11px;
+        font-size: 10px;
     }
     
     .vertical-demand-table .action-cell {
-        width: 18%;
+        width: 25%;
         padding: 1px !important;
     }
     
-    .action-cell {
-        gap: 1px;
+    .vertical-demand-table .action-cell .action-cell {
+        gap: 2px;
     }
     
-    .icon-btn {
+    .vertical-demand-table .action-cell .icon-btn {
         padding: 2px;
         font-size: 10px;
         min-width: 20px;
@@ -735,21 +748,26 @@
                 justify-content: center;
                 text-align: center;
             }
-              .vertical-demand-table {
-        font-size: 10px;
+             .vertical-demand-table th {
+        font-size: 9px;
+        padding: 3px 1px;
     }
     
-    .vertical-demand-table th,
-    .vertical-demand-table td {
-        padding: 2px 1px;
+    .vertical-demand-table .type-cell {
+        font-size: 9px;
     }
     
-    .icon-btn {
+    .vertical-demand-table .menu-cell {
+        font-size: 9px;
+    }
+    
+    .vertical-demand-table .action-cell .icon-btn {
         padding: 1px;
         font-size: 9px;
         min-width: 18px;
         min-height: 18px;
     }
+
         }
     </style>
 </head>
