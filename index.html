@@ -77,134 +77,6 @@
             animation: none;
         }
         
-        /* Vertical demand table styling */
-        .vertical-demand-table {
-            width: 100%;
-            margin-top: 8px;
-            font-size: 12px;
-            border-collapse: collapse;
-            border: 1px solid #e2e8f0;
-            table-layout: fixed;
-        }
-
-        .vertical-demand-table th {
-            background: var(--secondary);
-            padding: 6px 4px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-            font-weight: 600;
-        }
-
-        .vertical-demand-table td {
-            padding: 4px 6px;
-            vertical-align: middle;
-            border: 1px solid #e2e8f0;
-        }
-
-        .vertical-demand-table tr {
-            height: 32px;
-        }
-
-        .vertical-demand-table .type-cell {
-            background: #f8fafc;
-            font-weight: 600;
-            text-align: center;
-            border-right: 2px solid #cbd5e1;
-            vertical-align: middle;
-            width: 20%;
-        }
-
-        .vertical-demand-table .menu-cell {
-            padding-left: 8px;
-            width: 60%;
-            border-right: 1px solid #e2e8f0;
-        }
-
-        .vertical-demand-table .action-cell {
-            text-align: center;
-            white-space: nowrap;
-            width: 20%;
-            padding: 2px 4px !important;
-        }
-
-        .vertical-demand-table th:first-child,
-        .vertical-demand-table td.type-cell {
-            width: 20%;
-        }
-
-        .vertical-demand-table th:nth-child(2),
-        .vertical-demand-table td.menu-cell {
-            width: 60%;
-            border-right: 1px solid #e2e8f0;
-        }
-
-        .vertical-demand-table th:last-child,
-        .vertical-demand-table td.action-cell {
-            width: 20%;
-            min-width: 80px;
-        }
-
-        .vertical-demand-table .icon-btn {
-            padding: 2px 3px !important;
-            font-size: 12px !important;
-            margin: 0 1px;
-            width: 24px;
-            height: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .vertical-demand-table .action-cell > div {
-            display: flex;
-            gap: 2px;
-            justify-content: center;
-            align-items: center;
-            min-height: 20px;
-        }
-
-        .vertical-demand-table .icon-btn i {
-            font-size: 11px;
-        }
-
-        .vertical-demand-table .icon-btn:hover {
-            background: rgba(0,0,0,0.1);
-            transform: scale(1.05);
-        }
-
-        .vertical-demand-table td[rowspan] {
-            vertical-align: middle;
-        }
-
-        .highlight-latest {
-            background-color: #fef3c7 !important;
-            border-left: 4px solid #f59e0b !important;
-            animation: pulse-highlight 2s ease-in-out;
-        }
-
-        @keyframes pulse-highlight {
-            0% { background-color: #fef3c7; }
-            50% { background-color: #fde68a; }
-            100% { background-color: #fef3c7; }
-        }
-
-        .highlight-row {
-            background-color: #fef3c7;
-            border-left: 3px solid #f59e0b;
-        }
-
-        .highlight-latest-row {
-            background-color: #fef3c7 !important;
-            border-left: 3px solid #f59e0b !important;
-            animation: pulse-highlight 2s ease-in-out 3;
-        }
-
-        @keyframes pulse-highlight {
-            0% { background-color: #fef3c7; }
-            50% { background-color: #fde68a; }
-            100% { background-color: #fef3c7; }
-        }
-
         .login-btn {
             background: var(--accent-orange);
             color: white;
@@ -454,14 +326,6 @@
             font-size: 1rem;
         }
         
-        .action-buttons {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            display: flex;
-            gap: 5px;
-        }
-        
         .history-data {
             margin-top: 15px;
         }
@@ -509,66 +373,56 @@
             border-bottom: 1px solid #e2e8f0;
         }
         
+        /* Vertical demand table styling */
         .vertical-demand-table {
             width: 100%;
             margin-top: 8px;
             font-size: 12px;
             border-collapse: collapse;
+            border: 1px solid #e2e8f0;
+            table-layout: fixed;
         }
-        
+
         .vertical-demand-table th {
             background: var(--secondary);
-            padding: 6px 8px;
-            text-align: left;
-            width: 25%;
-        }
-        
-        .vertical-demand-table td {
-            padding: 6px 8px;
-            vertical-align: top;
-            text-align: left;
-        }
-        
-        .vertical-demand-table .menu-column {
-            width: 50%;
-        }
-        
-        .vertical-demand-table .action-column {
-            width: 25%;
+            padding: 6px 4px;
             text-align: center;
-        }
-        
-        .demand-item {
-            margin-bottom: 4px;
-            padding: 4px;
-            border-radius: 4px;
-            background: #f8fafc;
-        }
-        
-        .notes-list {
-            margin-top: 12px;
-        }
-        
-        .note-item {
-            background: #fff9e6;
-            padding: 10px;
-            border-radius: 6px;
-            margin-bottom: 8px;
-            border-left: 3px solid var(--accent-yellow);
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-        
-        .note-content {
-            flex: 1;
-        }
-        
-        .note-date {
+            border: 1px solid #e2e8f0;
             font-weight: 600;
-            margin-bottom: 4px;
         }
-        
+
+        .vertical-demand-table td {
+            padding: 4px 6px;
+            vertical-align: middle;
+            border: 1px solid #e2e8f0;
+        }
+
+        .vertical-demand-table tr {
+            height: 32px;
+        }
+
+        .vertical-demand-table .type-cell {
+            background: #f8fafc;
+            font-weight: 600;
+            text-align: center;
+            border-right: 2px solid #cbd5e1;
+            vertical-align: middle;
+            width: 20%;
+        }
+
+        .vertical-demand-table .menu-cell {
+            padding-left: 8px;
+            width: 60%;
+            border-right: 1px solid #e2e8f0;
+        }
+
+        .vertical-demand-table .action-cell {
+            text-align: center;
+            white-space: nowrap;
+            width: 20%;
+            padding: 2px 4px !important;
+        }
+
         .action-cell {
             display: flex;
             gap: 4px;
@@ -721,27 +575,28 @@
             display: none;
         }
         
-        /* Custom multi-select for mobile */
-        .custom-multi-select {
-            display: none;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 8px;
+        .notes-list {
+            margin-top: 12px;
         }
         
-        .user-checkbox {
+        .note-item {
+            background: #fff9e6;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            border-left: 3px solid var(--accent-yellow);
             display: flex;
-            align-items: center;
-            gap: 5px;
-            background: #f1f5f9;
-            padding: 6px 10px;
-            border-radius: 20px;
-            font-size: 13px;
+            justify-content: space-between;
+            align-items: flex-start;
         }
         
-        .user-checkbox input {
-            width: auto;
-            margin: 0;
+        .note-content {
+            flex: 1;
+        }
+        
+        .note-date {
+            font-weight: 600;
+            margin-bottom: 4px;
         }
         
         /* Mobile optimizations */
@@ -806,12 +661,24 @@
                 padding: 6px 4px;
             }
             
-            .multi-select {
-                display: none;
+            /* Improved mobile form styling */
+            .form-container {
+                padding: 10px;
             }
             
-            .custom-multi-select {
-                display: flex;
+            .multi-select {
+                height: auto;
+                min-height: 100px;
+            }
+            
+            /* Better touch targets for mobile */
+            .btn, .icon-btn, .tab-btn {
+                min-height: 44px;
+            }
+            
+            input, select, textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+                padding: 12px 8px;
             }
         }
         
@@ -1051,9 +918,6 @@
                         <select id="demand-users" multiple class="multi-select" required>
                             <option value="">Select Users</option>
                         </select>
-                        <div id="custom-user-select" class="custom-multi-select">
-                            <!-- Custom checkboxes for mobile -->
-                        </div>
                     </div>
                     <div class="form-group">
                         <label for="demand-menu">Menu</label>
@@ -1981,23 +1845,17 @@
                 });
         }
 
-        // DEMAND SECTION - UPDATED WITH VERTICAL LAYOUT
+        // DEMAND SECTION - FIXED FOR MOBILE BROWSERS
         document.getElementById('demand-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get selected users from custom checkboxes for mobile
-            const selectedUsers = [];
-            document.querySelectorAll('#custom-user-select input:checked').forEach(checkbox => {
-                selectedUsers.push(checkbox.value);
-            });
+            // Get selected users from the multi-select
+            const selectedUsers = Array.from(document.getElementById('demand-users').selectedOptions).map(option => option.value);
             
-            // Fallback to regular select for desktop
-            if (selectedUsers.length === 0) {
-                const users = Array.from(document.getElementById('demand-users').selectedOptions).map(option => option.value);
-                selectedUsers.push(...users);
-            }
+            // Filter out empty values
+            const validUsers = selectedUsers.filter(user => user && user.trim() !== '');
             
-            if (selectedUsers.length === 0) {
+            if (validUsers.length === 0) {
                 alert('Please select at least one user');
                 return;
             }
@@ -2007,8 +1865,17 @@
             const menu = document.getElementById('demand-menu').value;
             const remarks = document.getElementById('demand-remarks').value;
             
+            // Validate all required fields
+            if (!type || !date || !menu) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
             // Add demand for each selected user
-            selectedUsers.forEach(user => {
+            let successCount = 0;
+            let errorCount = 0;
+            
+            validUsers.forEach(user => {
                 const demandData = {
                     date: date,
                     user: user,
@@ -2018,17 +1885,32 @@
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 };
                 
-                addDemand(demandData);
-            });
-            
-            this.reset();
-            document.getElementById('demand-date').value = getToday();
-            // Reset the menu field after submission
-            document.getElementById('demand-menu').value = '';
-            
-            // Clear custom checkboxes
-            document.querySelectorAll('#custom-user-select input').forEach(checkbox => {
-                checkbox.checked = false;
+                addDemand(demandData)
+                    .then(() => {
+                        successCount++;
+                        if (successCount + errorCount === validUsers.length) {
+                            // All demands processed
+                            if (errorCount === 0) {
+                                // Reset form
+                                this.reset();
+                                document.getElementById('demand-date').value = getToday();
+                                alert('Demand added successfully!');
+                            } else {
+                                alert(`Added ${successCount} demands, but ${errorCount} failed.`);
+                            }
+                        }
+                    })
+                    .catch((error) => {
+                        errorCount++;
+                        console.error('Error adding demand:', error);
+                        if (successCount + errorCount === validUsers.length) {
+                            if (errorCount === validUsers.length) {
+                                alert('Error adding demand. Please check connection.');
+                            } else {
+                                alert(`Added ${successCount} demands, but ${errorCount} failed.`);
+                            }
+                        }
+                    });
             });
         });
 
@@ -2073,11 +1955,7 @@
         }
 
         function addDemand(demandData) {
-            db.collection(COLLECTIONS.DEMAND).add(demandData)
-                .catch((error) => {
-                    console.error('Error adding demand:', error);
-                    alert('Error adding demand. Please check connection.');
-                });
+            return db.collection(COLLECTIONS.DEMAND).add(demandData);
         }
 
         function loadDemandData() {
@@ -2110,7 +1988,7 @@
             unsubscribeFunctions.push(unsubscribe);
         }
 
-        // NEW: Vertical layout for today's demand
+        // Vertical layout for today's demand
         function displayTodayDemand(demands) {
             const today = getToday();
             const todayDemands = demands.filter(demand => demand.date === today);
@@ -2501,15 +2379,11 @@
                 .get()
                 .then((querySnapshot) => {
                     const userDropdown = document.getElementById('demand-users');
-                    const customUserSelect = document.getElementById('custom-user-select');
                     
                     // Clear existing options except the first one
                     while (userDropdown.options.length > 1) {
                         userDropdown.remove(1);
                     }
-                    
-                    // Clear custom checkboxes
-                    customUserSelect.innerHTML = '';
                     
                     querySnapshot.forEach((doc) => {
                         const user = doc.data();
@@ -2519,15 +2393,6 @@
                         option.value = user.name;
                         option.textContent = user.name;
                         userDropdown.appendChild(option);
-                        
-                        // Add to custom checkboxes for mobile
-                        const checkboxContainer = document.createElement('div');
-                        checkboxContainer.className = 'user-checkbox';
-                        checkboxContainer.innerHTML = `
-                            <input type="checkbox" id="user-${user.name}" value="${user.name}">
-                            <label for="user-${user.name}">${user.name}</label>
-                        `;
-                        customUserSelect.appendChild(checkboxContainer);
                     });
                 })
                 .catch((error) => {
