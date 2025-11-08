@@ -375,7 +375,7 @@
         }
         
         /* Vertical demand table styling */
-        .vertical-demand-table {
+      .vertical-demand-table {
     width: 100%;
     margin-top: 8px;
     font-size: 12px;
@@ -393,7 +393,7 @@
 }
 
 .vertical-demand-table td {
-    padding: 4px 6px;
+    padding: 4px 4px;
     vertical-align: middle;
     border: 1px solid #e2e8f0;
 }
@@ -409,11 +409,12 @@
     border-right: 2px solid #cbd5e1;
     vertical-align: middle;
     width: 20%;
+    padding: 4px 2px;
 }
 
 .vertical-demand-table .menu-cell {
-    padding-left: 8px;
-    width: 60%;
+    padding: 4px 6px;
+    width: 70%;
     border-right: 1px solid #e2e8f0;
     word-wrap: break-word;
     overflow-wrap: break-word;
@@ -422,16 +423,17 @@
 .vertical-demand-table .action-cell {
     text-align: center;
     white-space: nowrap;
-    width: 20%;
-    padding: 2px 4px !important;
+    width: 10%;
+    padding: 2px !important;
 }
 
 .action-cell {
     display: flex;
-    gap: 4px;
+    gap: 2px;
     justify-content: center;
     flex-wrap: nowrap;
 }
+
 .highlight-row {
     background-color: #fff9e6 !important;
     border-left: 3px solid var(--accent-yellow) !important;
@@ -655,35 +657,41 @@
                 min-width: 100%;
             }
             
-           .vertical-demand-table {
+            .vertical-demand-table {
         font-size: 11px;
     }
     
     .vertical-demand-table th,
     .vertical-demand-table td {
-        padding: 4px 3px;
+        padding: 3px 2px;
     }
     
     .vertical-demand-table .type-cell {
         width: 22%;
+        padding: 3px 1px;
+        font-size: 10px;
     }
     
     .vertical-demand-table .menu-cell {
-        width: 52%;
-        padding-left: 4px;
+        width: 60%;
+        padding: 3px 4px;
+        font-size: 11px;
     }
     
     .vertical-demand-table .action-cell {
-        width: 26%;
+        width: 18%;
+        padding: 1px !important;
     }
     
     .action-cell {
-        gap: 2px;
+        gap: 1px;
     }
     
     .icon-btn {
-        padding: 3px;
-        font-size: 12px;
+        padding: 2px;
+        font-size: 10px;
+        min-width: 20px;
+        min-height: 20px;
     }
 }
             
@@ -733,7 +741,14 @@
     
     .vertical-demand-table th,
     .vertical-demand-table td {
-        padding: 3px 2px;
+        padding: 2px 1px;
+    }
+    
+    .icon-btn {
+        padding: 1px;
+        font-size: 9px;
+        min-width: 18px;
+        min-height: 18px;
     }
         }
     </style>
