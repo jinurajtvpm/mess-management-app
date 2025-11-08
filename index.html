@@ -878,7 +878,7 @@
             <button class="tab-btn" data-tab="weekly-menu">Weekly Menu</button>
             <button class="tab-btn" data-tab="demand">Demand</button>
             <button class="tab-btn" data-tab="users" id="users-tab" style="display: none;">Users</button>
-            <button class="tab-btn" data-tab="notes">Notes</button>
+            <button class="tab-btn" data-tab="notes">Nots</button>
             <button class="tab-btn" data-tab="data" id="data-tab" style="display: none;">Data</button>
         </div>
         
@@ -1342,6 +1342,7 @@
         let currentUsers = [];
         let currentNotes = [];
         let currentWeekOffset = 0; // For weekly menu navigation
+        let weeklyMenuFormData = {}; // Store weekly menu form data
 
         // Login persistence - Check if user was previously logged in
         function checkLoginStatus() {
@@ -1617,19 +1618,12 @@
 
         function autoFillMenuFromWeekly(date) {
             const dayName = getDayName(date);
-            const weeklyMenu = currentWeeklyMenus.find(menu => {
-                const weekStart = getWeekStartDate(currentWeekOffset);
-                const weekDates = getWeekDates(weekStart);
-                return weekDates.includes(date);
-            });
+            const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
             
-            if (weeklyMenu) {
-                const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
-                if (dayIndex !== -1 && weeklyMenu.days && weeklyMenu.days[dayIndex]) {
-                    document.getElementById('breakfast').value = weeklyMenu.days[dayIndex].breakfast || '';
-                    document.getElementById('lunch').value = weeklyMenu.days[dayIndex].lunch || '';
-                    document.getElementById('dinner').value = weeklyMenu.days[dayIndex].dinner || '';
-                }
+            if (dayIndex !== -1 && weeklyMenuFormData.days && weeklyMenuFormData.days[dayIndex]) {
+                document.getElementById('breakfast').value = weeklyMenuFormData.days[dayIndex].breakfast || '';
+                document.getElementById('lunch').value = weeklyMenuFormData.days[dayIndex].lunch || '';
+                document.getElementById('dinner').value = weeklyMenuFormData.days[dayIndex].dinner || '';
             }
         }
 
@@ -1895,6 +1889,9 @@
             weeklyMenuDays.innerHTML = '';
             document.getElementById('week-start-date').value = weeklyMenu.weekStart;
             
+            // Store the weekly menu data for auto-fill functionality
+            weeklyMenuFormData = weeklyMenu;
+            
             const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
             
             dayNames.forEach((dayName, index) => {
@@ -1968,6 +1965,8 @@
                         }).then(() => {
                             console.log('Weekly menu updated successfully for week:', weeklyMenuData.weekStart);
                             alert('Weekly menu updated successfully!');
+                            // Update the stored form data
+                            weeklyMenuFormData = weeklyMenuData;
                         });
                     } else {
                         // Add new weekly menu
@@ -1975,6 +1974,8 @@
                             .then(() => {
                                 console.log('New weekly menu added for week:', weeklyMenuData.weekStart);
                                 alert('Weekly menu saved successfully!');
+                                // Update the stored form data
+                                weeklyMenuFormData = weeklyMenuData;
                             });
                     }
                 })
@@ -2069,26 +2070,17 @@
                     const dayName = getDayName(date);
                     const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
                     
-                    if (dayIndex !== -1) {
-                        const weeklyMenu = currentWeeklyMenus.find(menu => {
-                            const weekDates = getWeekDates(menu.weekStart);
-                            return weekDates.includes(date);
-                        });
-                        
-                        if (weeklyMenu && weeklyMenu.days && weeklyMenu.days[dayIndex]) {
-                            switch(type) {
-                                case 'breakfast':
-                                    menuField.value = weeklyMenu.days[dayIndex].breakfast || '';
-                                    break;
-                                case 'lunch':
-                                    menuField.value = weeklyMenu.days[dayIndex].lunch || '';
-                                    break;
-                                case 'dinner':
-                                    menuField.value = weeklyMenu.days[dayIndex].dinner || '';
-                                    break;
-                            }
-                        } else {
-                            menuField.value = '';
+                    if (dayIndex !== -1 && weeklyMenuFormData.days && weeklyMenuFormData.days[dayIndex]) {
+                        switch(type) {
+                            case 'breakfast':
+                                menuField.value = weeklyMenuFormData.days[dayIndex].breakfast || '';
+                                break;
+                            case 'lunch':
+                                menuField.value = weeklyMenuFormData.days[dayIndex].lunch || '';
+                                break;
+                            case 'dinner':
+                                menuField.value = weeklyMenuFormData.days[dayIndex].dinner || '';
+                                break;
                         }
                     } else {
                         menuField.value = '';
@@ -2892,6 +2884,12 @@
             if (isLoggedIn) {
                 loadAllData();
             }
+        });
+
+        // Handle page beforeunload to prevent session issues
+        window.addEventListener('beforeunload', function() {
+            // Save current state
+            localStorage.setItem('app_last_loaded', new Date().toISOString());
         });
     </script>
 </body>
