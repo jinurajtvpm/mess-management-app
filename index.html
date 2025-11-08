@@ -130,35 +130,34 @@
         }
         
         .nav-tabs {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 5px;
-    margin-bottom: 15px;
-    background: rgba(255,255,255,0.95);
-    border-radius: 10px;
-    padding: 8px;
-    box-shadow: var(--shadow);
-}
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+            margin-bottom: 15px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 10px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+        }
 
-.tab-btn {
-    padding: 8px 6px;
-    border: none;
-    background: transparent;
-    border-radius: 8px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    color: var(--dark);
-    font-size: 12px;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 40px;
-    word-break: break-word;
-    line-height: 1.2;
-}
-
+        .tab-btn {
+            padding: 8px 6px;
+            border: none;
+            background: transparent;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--dark);
+            font-size: 12px;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 40px;
+            word-break: break-word;
+            line-height: 1.2;
+        }
         
         .tab-btn.active {
             background: var(--primary);
@@ -378,79 +377,78 @@
         }
         
         /* Vertical demand table styling */
-  .vertical-demand-table {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 12px;
-    border-collapse: collapse;
-    border: 1px solid #e2e8f0;
-}
+        .vertical-demand-table {
+            width: 100%;
+            margin-top: 8px;
+            font-size: 12px;
+            border-collapse: collapse;
+            border: 1px solid #e2e8f0;
+        }
 
-.vertical-demand-table th {
-    background: var(--secondary);
-    padding: 6px 3px;
-    text-align: center;
-    border: 1px solid #e2e8f0;
-    font-weight: 600;
-    font-size: 11px;
-}
+        .vertical-demand-table th {
+            background: var(--secondary);
+            padding: 6px 3px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            font-weight: 600;
+            font-size: 11px;
+        }
 
-.vertical-demand-table td {
-    padding: 4px 3px;
-    vertical-align: middle;
-    border: 1px solid #e2e8f0;
-}
+        .vertical-demand-table td {
+            padding: 4px 3px;
+            vertical-align: middle;
+            border: 1px solid #e2e8f0;
+        }
 
-.vertical-demand-table .type-cell {
-    background: #f8fafc;
-    font-weight: 600;
-    text-align: center;
-    border-right: 2px solid #cbd5e1;
-    vertical-align: middle;
-    max-width: 18%;
-    padding: 4px 2px;
-    font-size: 11px;
-}
+        .vertical-demand-table .type-cell {
+            background: #f8fafc;
+            font-weight: 600;
+            text-align: center;
+            border-right: 2px solid #cbd5e1;
+            vertical-align: middle;
+            max-width: 18%;
+            padding: 4px 2px;
+            font-size: 11px;
+        }
 
-.vertical-demand-table .menu-cell {
-    padding: 4px 6px;
-    width: 65%;
-    border-right: 1px solid #e2e8f0;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    font-size: 11px;
-}
+        .vertical-demand-table .menu-cell {
+            padding: 4px 6px;
+            width: 65%;
+            border-right: 1px solid #e2e8f0;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            font-size: 11px;
+        }
 
-.vertical-demand-table .action-cell {
-    text-align: center;
-    width: 17%;
-    padding: 2px 5% !important;
-}
+        .vertical-demand-table .action-cell {
+            text-align: center;
+            width: 17%;
+            padding: 2px 5% !important;
+        }
 
-.vertical-demand-table .action-cell .action-cell {
-    display: flex;
-    gap: 3px;
-    justify-content: center;
-    align-items: center;
-    padding: 0 !important;
-}
+        .vertical-demand-table .action-cell .action-cell {
+            display: flex;
+            gap: 3px;
+            justify-content: center;
+            align-items: center;
+            padding: 0 !important;
+        }
 
-.vertical-demand-table .action-cell .icon-btn {
-    padding: 3px;
-    font-size: 11px;
-    min-width: 22px;
-    min-height: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+        .vertical-demand-table .action-cell .icon-btn {
+            padding: 3px;
+            font-size: 11px;
+            min-width: 22px;
+            min-height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-.highlight-row {
-    background-color: #fff9e6 !important;
-    border-left: 3px solid var(--accent-yellow) !important;
-    font-weight: 600;
-}
-
+        .highlight-row {
+            background-color: #fff9e6 !important;
+            border-left: 3px solid var(--accent-yellow) !important;
+            font-weight: 600;
+        }
         
         .multi-select {
             height: 80px;
@@ -622,6 +620,133 @@
             margin-bottom: 4px;
         }
         
+        /* View Toggle Styles */
+        .view-toggle {
+            display: flex;
+            justify-content: center;
+            margin: 15px 0;
+            background: var(--light);
+            border-radius: 8px;
+            padding: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .toggle-btn {
+            flex: 1;
+            padding: 8px 12px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .toggle-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Type-wise demand tiles */
+        .type-tile {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 15px;
+        }
+        
+        .type-tile-breakfast {
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .type-tile-lunch {
+            border-left: 4px solid #10b981;
+        }
+        
+        .type-tile-dinner {
+            border-left: 4px solid #3b82f6;
+        }
+        
+        .type-tile-other {
+            border-left: 4px solid #8b5cf6;
+        }
+        
+        .type-tile-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        /* Date selector and view toggle in single row */
+        .demand-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            background: var(--light);
+            padding: 10px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            flex-wrap: wrap;
+        }
+        
+        .date-selector {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .date-selector label {
+            margin-bottom: 0;
+            font-weight: 600;
+            white-space: nowrap;
+            font-size: 13px;
+        }
+        
+        .date-selector input {
+            flex: 1;
+            min-width: 120px;
+        }
+        
+        .view-toggle-container {
+            display: flex;
+            gap: 5px;
+            background: #e2e8f0;
+            padding: 4px;
+            border-radius: 6px;
+        }
+        
+        .view-toggle-btn {
+            padding: 6px 12px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        
+        .view-toggle-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .demand-title {
+            text-align: center;
+            margin: 10px 0;
+            color: var(--primary);
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 480px) {
             .menu-content {
@@ -629,17 +754,17 @@
                 gap: 8px;
             }
             
-             .nav-tabs {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 4px;
-        padding: 6px;
-    }
-    
-    .tab-btn {
-        font-size: 11px;
-        padding: 6px 4px;
-        min-height: 36px;
-    }
+            .nav-tabs {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+                padding: 6px;
+            }
+            
+            .tab-btn {
+                font-size: 11px;
+                padding: 6px 4px;
+                min-height: 36px;
+            }
             
             .top-bar {
                 flex-wrap: wrap;
@@ -669,76 +794,59 @@
                 min-width: 100%;
             }
             
-          .vertical-demand-table {
-        font-size: 10px;
-    }
-    
-    .vertical-demand-table th {
-        padding: 4px 2px;
-        font-size: 10px;
-    }
-    
-    .vertical-demand-table td {
-        padding: 3px 2px;
-    }
-    
-    .vertical-demand-table .type-cell {
-        width: 20%;
-        padding: 3px 1px;
-        font-size: 10px;
-    }
-    
-    .vertical-demand-table .menu-cell {
-        width: 55%;
-        padding: 3px 4px;
-        font-size: 10px;
-    }
-    
-    .vertical-demand-table .action-cell {
-        width: 25%;
-        padding: 1px !important;
-        margin-left: 10px;
-    }
-    
-    .vertical-demand-table .action-cell .action-cell {
-        gap: 2px;
-    }
-    
-    .vertical-demand-table .action-cell .icon-btn {
-        padding: 2px;
-        font-size: 10px;
-        min-width: 20px;
-        min-height: 20px;
-    }
-}
-            
-            .weekly-menu-table {
-                font-size: 11px;
+            .vertical-demand-table {
+                font-size: 10px;
             }
             
-            .weekly-menu-table th,
-            .weekly-menu-table td {
-                padding: 6px 4px;
+            .vertical-demand-table th {
+                padding: 4px 2px;
+                font-size: 10px;
             }
             
-            /* Improved mobile form styling */
-            .form-container {
-                padding: 10px;
+            .vertical-demand-table td {
+                padding: 3px 2px;
             }
             
-            .multi-select {
-                height: auto;
-                min-height: 100px;
+            .vertical-demand-table .type-cell {
+                width: 20%;
+                padding: 3px 1px;
+                font-size: 10px;
             }
             
-            /* Better touch targets for mobile */
-            .btn, .icon-btn, .tab-btn {
-                min-height: 44px;
+            .vertical-demand-table .menu-cell {
+                width: 55%;
+                padding: 3px 4px;
+                font-size: 10px;
             }
             
-            input, select, textarea {
-                font-size: 16px; /* Prevents zoom on iOS */
-                padding: 12px 8px;
+            .vertical-demand-table .action-cell {
+                width: 25%;
+                padding: 1px !important;
+            }
+            
+            .vertical-demand-table .action-cell .action-cell {
+                gap: 2px;
+            }
+            
+            .vertical-demand-table .action-cell .icon-btn {
+                padding: 2px;
+                font-size: 10px;
+                min-width: 20px;
+                min-height: 20px;
+            }
+            
+            .demand-controls {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .date-selector {
+                min-width: 100%;
+            }
+            
+            .view-toggle-container {
+                width: 100%;
+                justify-content: center;
             }
         }
         
@@ -752,27 +860,26 @@
                 justify-content: center;
                 text-align: center;
             }
-             .vertical-demand-table th {
-        font-size: 9px;
-        padding: 3px 1px;
-    }
-    
-    .vertical-demand-table .type-cell {
-        font-size: 9px;
-    }
-    
-    .vertical-demand-table .menu-cell {
-        font-size: 9px;
-    }
-    
-    .vertical-demand-table .action-cell .icon-btn {
-        padding: 1px;
-        font-size: 9px;
-        min-width: 18px;
-        min-height: 18px;
-        margin-left: 5px;
-    }
-
+            
+            .vertical-demand-table th {
+                font-size: 9px;
+                padding: 3px 1px;
+            }
+            
+            .vertical-demand-table .type-cell {
+                font-size: 9px;
+            }
+            
+            .vertical-demand-table .menu-cell {
+                font-size: 9px;
+            }
+            
+            .vertical-demand-table .action-cell .icon-btn {
+                padding: 1px;
+                font-size: 9px;
+                min-width: 18px;
+                min-height: 18px;
+            }
         }
     </style>
 </head>
@@ -876,7 +983,8 @@
                 </div>
             </div>
             
-            <div class="form-container">
+            <!-- Admin-only form -->
+            <div class="form-container" id="menu-form-container" style="display: none;">
                 <h3>Add/Update Menu</h3>
                 <form id="menu-form">
                     <div class="form-group">
@@ -901,7 +1009,8 @@
                 </form>
             </div>
             
-            <div class="history-data">
+            <!-- Admin-only history -->
+            <div class="history-data" id="menu-history-container" style="display: none;">
                 <h3>All Menus</h3>
                 <table id="menu-history">
                     <thead>
@@ -969,15 +1078,43 @@
         <div id="demand" class="tab-content">
             <h2 class="section-title">Demand</h2>
             
-            <!-- Today's Demand Tile -->
-            <div id="today-demand-tile">
-                <h3>Today's Demand</h3>
-                <div id="today-demand-content" class="user-tiles">
-                    <!-- Content will be populated dynamically -->
+            <!-- Controls Row -->
+            <div class="demand-controls">
+                <!-- Date Selector -->
+                <div class="date-selector">
+                    <label for="demand-view-date">Date:</label>
+                    <input type="date" id="demand-view-date">
+                </div>
+                
+                <!-- View Toggle -->
+                <div class="view-toggle-container">
+                    <button class="view-toggle-btn active" id="user-view-btn">User View</button>
+                    <button class="view-toggle-btn" id="type-view-btn">Type View</button>
                 </div>
             </div>
             
-            <div class="form-container">
+            <!-- Demand Title -->
+            <div class="demand-title" id="demand-date-title">Today's Demand</div>
+            
+            <!-- Today's Demand Tile -->
+            <div id="today-demand-tile">
+                <!-- User-wise view -->
+                <div id="user-wise-view">
+                    <div id="today-demand-content" class="user-tiles">
+                        <!-- Content will be populated dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Type-wise view -->
+                <div id="type-wise-view" style="display: none;">
+                    <div id="today-demand-type-content" class="user-tiles">
+                        <!-- Content will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Admin-only form -->
+            <div class="form-container" id="demand-form-container" style="display: none;">
                 <h3>Add Demand</h3>
                 <form id="demand-form">
                     <div class="form-group">
@@ -1014,7 +1151,8 @@
                 </form>
             </div>
             
-            <div class="history-data">
+            <!-- Admin-only history -->
+            <div class="history-data" id="demand-history-container" style="display: none;">
                 <h3>Demand History</h3>
                 
                 <!-- Filter Controls -->
@@ -1288,6 +1426,8 @@
         let currentNotes = [];
         let currentWeekOffset = 0; // For weekly menu navigation
         let weeklyMenuFormData = {}; // Store weekly menu form data
+        let currentDemandView = 'user'; // 'user' or 'type'
+        let currentDemandViewDate = ''; // Current date for demand view
 
         // Login persistence - Check if user was previously logged in
         function checkLoginStatus() {
@@ -1342,6 +1482,10 @@
             document.getElementById('users-tab').style.display = 'flex';
             document.getElementById('data-tab').style.display = 'flex';
             document.getElementById('weekly-menu-admin').style.display = 'block';
+            document.getElementById('menu-form-container').style.display = 'block';
+            document.getElementById('menu-history-container').style.display = 'block';
+            document.getElementById('demand-form-container').style.display = 'block';
+            document.getElementById('demand-history-container').style.display = 'block';
             
             // Update action buttons visibility
             updateActionButtons();
@@ -1358,6 +1502,10 @@
             document.getElementById('users-tab').style.display = 'none';
             document.getElementById('data-tab').style.display = 'none';
             document.getElementById('weekly-menu-admin').style.display = 'none';
+            document.getElementById('menu-form-container').style.display = 'none';
+            document.getElementById('menu-history-container').style.display = 'none';
+            document.getElementById('demand-form-container').style.display = 'none';
+            document.getElementById('demand-history-container').style.display = 'none';
             
             // If currently on protected tabs, switch to first tab
             const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
@@ -1375,10 +1523,25 @@
         }
 
         function updateActionButtons() {
-            // Update table headers
-            document.getElementById('menu-history-action-header').style.display = isLoggedIn ? 'table-cell' : 'none';
-            document.getElementById('demand-history-action-header').style.display = isLoggedIn ? 'table-cell' : 'none';
-        }
+    const isVisible = isLoggedIn ? '' : 'none';
+    
+    // Update table headers
+    document.getElementById('menu-history-action-header').style.display = isVisible;
+    document.getElementById('demand-history-action-header').style.display = isVisible;
+    
+    // Update action cells
+    const actionCells = document.querySelectorAll('.vertical-demand-table .action-cell');
+    actionCells.forEach(cell => {
+        cell.style.display = isVisible;
+        
+        // Ensure buttons stay inline
+        const buttons = cell.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.style.display = 'inline-block';
+            button.style.marginRight = '5px';
+        });
+    });
+}
 
         // Connection monitoring
         function monitorConnection() {
@@ -2069,10 +2232,49 @@
             unsubscribeFunctions.push(unsubscribe);
         }
 
-        // Vertical layout for today's demand
+        // Date selector for demand view
+        document.getElementById('demand-view-date').addEventListener('change', function() {
+            currentDemandViewDate = this.value;
+            updateDemandViewTitle();
+            displayTodayDemand(currentDemands);
+        });
+
+        function updateDemandViewTitle() {
+            const titleElement = document.getElementById('demand-date-title');
+            if (currentDemandViewDate && currentDemandViewDate !== getToday()) {
+                titleElement.textContent = `Demand for ${formatDate(currentDemandViewDate)}`;
+            } else {
+                titleElement.textContent = "Today's Demand";
+            }
+        }
+
+        // View toggle functionality
+        document.getElementById('user-view-btn').addEventListener('click', function() {
+            if (currentDemandView !== 'user') {
+                currentDemandView = 'user';
+                this.classList.add('active');
+                document.getElementById('type-view-btn').classList.remove('active');
+                document.getElementById('user-wise-view').style.display = 'block';
+                document.getElementById('type-wise-view').style.display = 'none';
+                displayTodayDemand(currentDemands);
+            }
+        });
+
+        document.getElementById('type-view-btn').addEventListener('click', function() {
+            if (currentDemandView !== 'type') {
+                currentDemandView = 'type';
+                this.classList.add('active');
+                document.getElementById('user-view-btn').classList.remove('active');
+                document.getElementById('user-wise-view').style.display = 'none';
+                document.getElementById('type-wise-view').style.display = 'block';
+                displayTodayDemandByType(currentDemands);
+            }
+        });
+
+        // Vertical layout for today's demand (user-wise)
         function displayTodayDemand(demands) {
-            const today = getToday();
-            const todayDemands = demands.filter(demand => demand.date === today);
+            const viewDate = currentDemandViewDate || getToday();
+            const todayDemands = demands.filter(demand => demand.date === viewDate);
             const todayDemandContent = document.getElementById('today-demand-content');
             
             // Sort demands by creation time to find the latest
@@ -2096,7 +2298,7 @@
             todayDemandContent.innerHTML = '';
             
             if (Object.keys(userDemands).length === 0) {
-                todayDemandContent.innerHTML = '<p style="text-align:center; padding:10px;">No demands for today.</p>';
+                todayDemandContent.innerHTML = `<p style="text-align:center; padding:10px;">No demands for ${formatDate(viewDate)}.</p>`;
                 return;
             }
             
@@ -2107,7 +2309,7 @@
                 let demandHTML = `
                     <div class="user-tile-header">
                         <h4>${user}</h4>
-                        <span>${formatDate(today)}</span>
+                        <span>${formatDate(viewDate)}</span>
                     </div>
                     <table class="vertical-demand-table">
                         <thead>
@@ -2205,6 +2407,117 @@
                 userTile.innerHTML = demandHTML;
                 todayDemandContent.appendChild(userTile);
             }
+            
+            // Update action buttons visibility
+            updateActionButtons();
+        }
+
+        // Type-wise layout for today's demand
+        function displayTodayDemandByType(demands) {
+            const viewDate = currentDemandViewDate || getToday();
+            const todayDemands = demands.filter(demand => demand.date === viewDate);
+            const todayDemandTypeContent = document.getElementById('today-demand-type-content');
+            
+            // Sort demands by creation time to find the latest
+            const sortedDemands = [...todayDemands].sort((a, b) => {
+                const timeA = a.createdAt ? a.createdAt.toDate().getTime() : 0;
+                const timeB = b.createdAt ? b.createdAt.toDate().getTime() : 0;
+                return timeB - timeA; // Latest first
+            });
+            
+            const latestDemandId = sortedDemands.length > 0 ? sortedDemands[0].id : null;
+            
+            // Group demands by type
+            const typeDemands = {
+                breakfast: [],
+                lunch: [],
+                dinner: [],
+                other: []
+            };
+            
+            todayDemands.forEach(demand => {
+                if (typeDemands[demand.type]) {
+                    typeDemands[demand.type].push(demand);
+                }
+            });
+            
+            todayDemandTypeContent.innerHTML = '';
+            
+            if (Object.keys(typeDemands).length === 0) {
+                todayDemandTypeContent.innerHTML = `<p style="text-align:center; padding:10px;">No demands for ${formatDate(viewDate)}.</p>`;
+                return;
+            }
+            
+            for (const type in typeDemands) {
+                if (typeDemands[type].length > 0) {
+                    const typeTile = document.createElement('div');
+                    const typeClass = `type-tile type-tile-${type}`;
+                    typeTile.className = typeClass;
+                    
+                    const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
+                    
+                    let demandHTML = `
+                        <div class="type-tile-header">
+                            <h4>${typeLabel}</h4>
+                            <span>${formatDate(viewDate)}</span>
+                        </div>
+                        <table class="vertical-demand-table">
+                            <thead>
+                                <tr>
+                                    <th>User</th>
+                                    <th class="menu-column">Menu</th>
+                                    <th class="action-column">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                    `;
+                    
+                    // Create rows for each demand
+                    typeDemands[type].forEach(demand => {
+                        const isLatestRow = demand.id === latestDemandId;
+                        const rowClass = isLatestRow ? 'highlight-row' : '';
+                        
+                        demandHTML += `
+                            <tr class="${rowClass}">
+                                <td class="type-cell">${demand.user}</td>
+                                <td class="menu-cell">${demand.menu}</td>
+                                <td class="action-cell">
+                                    <div class="action-cell">
+                                        <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demand.id}')" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="icon-btn delete-btn" onclick="deleteDemand('${demand.id}')" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                    });
+                    
+                    // Add remarks row if any
+                    const remarks = typeDemands[type].filter(d => d.remarks).map(d => d.remarks);
+                    if (remarks.length > 0) {
+                        demandHTML += `
+                            <tr>
+                                <td>Remarks</td>
+                                <td class="menu-cell" colspan="2">${remarks.join(', ')}</td>
+                            </tr>
+                        `;
+                    }
+                    
+                    demandHTML += `
+                            </tbody>
+                        </table>
+                    `;
+                    
+                    typeTile.innerHTML = demandHTML;
+                    todayDemandTypeContent.appendChild(typeTile);
+                }
+            }
+            
+            // Update action buttons visibility
+            updateActionButtons();
         }
 
         function populateUserFilter() {
@@ -2247,8 +2560,11 @@
             }
             
             filteredDemands.forEach(demand => {
-                const deleteButton = isLoggedIn ? 
+                const actionButtons = isLoggedIn ? 
                     `<td class="action-cell">
+                        <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demand.id}')" title="Edit">
+                            <i class="fas fa-edit"></i>
+                        </button>
                         <button class="icon-btn delete-btn" onclick="deleteDemand('${demand.id}')" title="Delete">
                             <i class="fas fa-trash"></i>
                         </button>
@@ -2262,7 +2578,7 @@
                     <td>${demand.type}</td>
                     <td>${demand.menu}</td>
                     <td>${demand.remarks || '-'}</td>
-                    ${deleteButton}
+                    ${actionButtons}
                 `;
                 historyBody.appendChild(row);
             });
@@ -2282,6 +2598,12 @@
         });
 
         function openEditDemandModal(id) {
+            if (!isLoggedIn) {
+                alert('Please login to edit demand');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
             db.collection(COLLECTIONS.DEMAND).doc(id).get()
                 .then((doc) => {
                     if (doc.exists) {
@@ -2346,6 +2668,12 @@
         }
 
         function deleteDemand(id) {
+            if (!isLoggedIn) {
+                alert('Please login to delete demand');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
             if (confirm('Are you sure you want to delete this demand?')) {
                 db.collection(COLLECTIONS.DEMAND).doc(id).delete()
                     .then(() => {
@@ -2773,6 +3101,8 @@
             document.getElementById('menu-date').value = today;
             document.getElementById('demand-date').value = today;
             document.getElementById('note-date').value = today;
+            document.getElementById('demand-view-date').value = today;
+            currentDemandViewDate = today;
             
             // Check if user was previously logged in
             checkLoginStatus();
