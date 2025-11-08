@@ -127,34 +127,35 @@
         }
         
         .nav-tabs {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.95);
-            border-radius: 10px;
-            padding: 5px;
-            box-shadow: var(--shadow);
-            flex-wrap: wrap;
-        }
-        
-        .tab-btn {
-            padding: 8px 12px;
-            border: none;
-            background: transparent;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: var(--dark);
-            flex: 1;
-            min-width: 80px;
-            margin: 2px;
-            font-size: 13px;
-            text-align: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    margin-bottom: 15px;
+    background: rgba(255,255,255,0.95);
+    border-radius: 10px;
+    padding: 8px;
+    box-shadow: var(--shadow);
+}
+
+.tab-btn {
+    padding: 8px 6px;
+    border: none;
+    background: transparent;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--dark);
+    font-size: 12px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40px;
+    word-break: break-word;
+    line-height: 1.2;
+}
+
         
         .tab-btn.active {
             background: var(--primary);
@@ -375,59 +376,67 @@
         
         /* Vertical demand table styling */
         .vertical-demand-table {
-            width: 100%;
-            margin-top: 8px;
-            font-size: 12px;
-            border-collapse: collapse;
-            border: 1px solid #e2e8f0;
-            table-layout: fixed;
-        }
+    width: 100%;
+    margin-top: 8px;
+    font-size: 12px;
+    border-collapse: collapse;
+    border: 1px solid #e2e8f0;
+    table-layout: fixed;
+}
 
-        .vertical-demand-table th {
-            background: var(--secondary);
-            padding: 6px 4px;
-            text-align: center;
-            border: 1px solid #e2e8f0;
-            font-weight: 600;
-        }
+.vertical-demand-table th {
+    background: var(--secondary);
+    padding: 6px 4px;
+    text-align: center;
+    border: 1px solid #e2e8f0;
+    font-weight: 600;
+}
 
-        .vertical-demand-table td {
-            padding: 4px 6px;
-            vertical-align: middle;
-            border: 1px solid #e2e8f0;
-        }
+.vertical-demand-table td {
+    padding: 4px 6px;
+    vertical-align: middle;
+    border: 1px solid #e2e8f0;
+}
 
-        .vertical-demand-table tr {
-            height: 32px;
-        }
+.vertical-demand-table tr {
+    height: 32px;
+}
 
-        .vertical-demand-table .type-cell {
-            background: #f8fafc;
-            font-weight: 600;
-            text-align: center;
-            border-right: 2px solid #cbd5e1;
-            vertical-align: middle;
-            width: 20%;
-        }
+.vertical-demand-table .type-cell {
+    background: #f8fafc;
+    font-weight: 600;
+    text-align: center;
+    border-right: 2px solid #cbd5e1;
+    vertical-align: middle;
+    width: 20%;
+}
 
-        .vertical-demand-table .menu-cell {
-            padding-left: 8px;
-            width: 60%;
-            border-right: 1px solid #e2e8f0;
-        }
+.vertical-demand-table .menu-cell {
+    padding-left: 8px;
+    width: 60%;
+    border-right: 1px solid #e2e8f0;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
 
-        .vertical-demand-table .action-cell {
-            text-align: center;
-            white-space: nowrap;
-            width: 20%;
-            padding: 2px 4px !important;
-        }
+.vertical-demand-table .action-cell {
+    text-align: center;
+    white-space: nowrap;
+    width: 20%;
+    padding: 2px 4px !important;
+}
 
-        .action-cell {
-            display: flex;
-            gap: 4px;
-            justify-content: center;
-        }
+.action-cell {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    flex-wrap: nowrap;
+}
+.highlight-row {
+    background-color: #fff9e6 !important;
+    border-left: 3px solid var(--accent-yellow) !important;
+    font-weight: 600;
+}
         
         .multi-select {
             height: 80px;
@@ -606,14 +615,17 @@
                 gap: 8px;
             }
             
-            .nav-tabs {
-                flex-direction: column;
-            }
-            
-            .tab-btn {
-                width: 100%;
-                margin: 1px 0;
-            }
+             .nav-tabs {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4px;
+        padding: 6px;
+    }
+    
+    .tab-btn {
+        font-size: 11px;
+        padding: 6px 4px;
+        min-height: 36px;
+    }
             
             .top-bar {
                 flex-wrap: wrap;
@@ -643,14 +655,37 @@
                 min-width: 100%;
             }
             
-            .vertical-demand-table {
-                font-size: 11px;
-            }
-            
-            .vertical-demand-table th,
-            .vertical-demand-table td {
-                padding: 4px 6px;
-            }
+           .vertical-demand-table {
+        font-size: 11px;
+    }
+    
+    .vertical-demand-table th,
+    .vertical-demand-table td {
+        padding: 4px 3px;
+    }
+    
+    .vertical-demand-table .type-cell {
+        width: 22%;
+    }
+    
+    .vertical-demand-table .menu-cell {
+        width: 52%;
+        padding-left: 4px;
+    }
+    
+    .vertical-demand-table .action-cell {
+        width: 26%;
+    }
+    
+    .action-cell {
+        gap: 2px;
+    }
+    
+    .icon-btn {
+        padding: 3px;
+        font-size: 12px;
+    }
+}
             
             .weekly-menu-table {
                 font-size: 11px;
@@ -692,6 +727,14 @@
                 justify-content: center;
                 text-align: center;
             }
+              .vertical-demand-table {
+        font-size: 10px;
+    }
+    
+    .vertical-demand-table th,
+    .vertical-demand-table td {
+        padding: 3px 2px;
+    }
         }
     </style>
 </head>
@@ -1179,7 +1222,7 @@
         // =============================================
         // LOGIN CREDENTIALS
         // =============================================
-        const ADMIN_USERNAME = "jinurajtvpm";
+        const ADMIN_USERNAME = "jinurajtvpm"; 
         const ADMIN_PASSWORD = "Trinity@5";
         const LOGIN_STORAGE_KEY = "mess_admin_logged_in";
 
