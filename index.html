@@ -6,17 +6,6 @@
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="theme-color" content="#2196f3">
-    <meta name="application-name" content="Mess Management">
-    <meta name="apple-mobile-web-app-title" content="Mess Management">
-    <meta name="msapplication-TileColor" content="#2196f3">
-    <meta name="msapplication-tap-highlight" content="no">
-    
-    <!-- Manifest file -->
-    <link rel="manifest" href="manifest.json">
-    
-    <!-- Icons for different platforms -->
-    <link rel="icon" type="image/png" href="icons/icon-192x192.png">
-    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
     <title>Mess Management</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
@@ -1346,53 +1335,6 @@
             saveLoginStatus(false);
             updateUIForLogout();
         });
-
-        // Add to your existing JavaScript
-let deferredPrompt;
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    // Prevent the mini-infobar from appearing on mobile
-    e.preventDefault();
-    // Stash the event so it can be triggered later
-    deferredPrompt = e;
-    // Update UI to notify the user they can install the PWA
-    console.log('PWA installation available');
-    
-    // Optional: Show install button
-    showInstallPromotion();
-});
-
-function showInstallPromotion() {
-    // You can add a custom install button to your UI
-    console.log('Show install promotion to user');
-}
-
-// Function to trigger installation
-function installPWA() {
-    if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then((choiceResult) => {
-            if (choiceResult.outcome === 'accepted') {
-                console.log('User accepted the install prompt');
-            } else {
-                console.log('User dismissed the install prompt');
-            }
-            deferredPrompt = null;
-        });
-    }
-}
-
-// Detect if app is running in standalone mode
-function isRunningStandalone() {
-    return (window.matchMedia('(display-mode: standalone)').matches) || 
-           (window.navigator.standalone) || 
-           (document.referrer.includes('android-app://'));
-}
-
-// Use this to adjust UI for standalone mode
-if (isRunningStandalone()) {
-    document.body.classList.add('standalone-mode');
-}
 
         function updateUIForLogin() {
             document.getElementById('open-login-btn').style.display = 'none';
@@ -2849,20 +2791,6 @@ if (isRunningStandalone()) {
             
             console.log('App initialization complete');
         };
-
-        // Service Worker Registration
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function() {
-        navigator.serviceWorker.register('/sw.js')
-            .then(function(registration) {
-                console.log('ServiceWorker registration successful');
-            })
-            .catch(function(error) {
-                console.log('ServiceWorker registration failed: ', error);
-            });
-    });
-}
     </script>
-
 </body>
 </html>
