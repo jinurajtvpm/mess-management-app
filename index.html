@@ -76,164 +76,135 @@
             background: var(--accent-green);
             animation: none;
         }
-       /* Vertical demand table styling */
-/* Vertical demand table styling */
-.vertical-demand-table {
-    width: 100%;
-    margin-top: 8px;
-    font-size: 12px;
-    border-collapse: collapse;
-    border: 1px solid #e2e8f0;
-    table-layout: fixed; /* Add this for consistent column sizing */
-}
+        
+        /* Vertical demand table styling */
+        .vertical-demand-table {
+            width: 100%;
+            margin-top: 8px;
+            font-size: 12px;
+            border-collapse: collapse;
+            border: 1px solid #e2e8f0;
+            table-layout: fixed;
+        }
 
-.vertical-demand-table th {
-    background: var(--secondary);
-    padding: 6px 4px; /* Reduced padding */
-    text-align: center;
-    border: 1px solid #e2e8f0;
-    font-weight: 600;
-}
+        .vertical-demand-table th {
+            background: var(--secondary);
+            padding: 6px 4px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            font-weight: 600;
+        }
 
-.vertical-demand-table td {
-    padding: 4px 6px; /* Reduced padding */
-    vertical-align: middle;
-    border: 1px solid #e2e8f0;
-}
+        .vertical-demand-table td {
+            padding: 4px 6px;
+            vertical-align: middle;
+            border: 1px solid #e2e8f0;
+        }
 
-/* Reduce row height */
-.vertical-demand-table tr {
-    height: 32px; /* Slightly reduced height */
-}
+        .vertical-demand-table tr {
+            height: 32px;
+        }
 
-/* Type cell styling */
-.vertical-demand-table .type-cell {
-    background: #f8fafc;
-    font-weight: 600;
-    text-align: center;
-    border-right: 2px solid #cbd5e1;
-    vertical-align: middle;
-    width: 20%; /* Reduced width */
-}
+        .vertical-demand-table .type-cell {
+            background: #f8fafc;
+            font-weight: 600;
+            text-align: center;
+            border-right: 2px solid #cbd5e1;
+            vertical-align: middle;
+            width: 20%;
+        }
 
-/* Menu cell styling */
-.vertical-demand-table .menu-cell {
-    padding-left: 8px; /* Reduced padding */
-    width: 60%; /* Increased width */
-    border-right: 1px solid #e2e8f0;
-}
+        .vertical-demand-table .menu-cell {
+            padding-left: 8px;
+            width: 60%;
+            border-right: 1px solid #e2e8f0;
+        }
 
-/* Action cell styling - FLEXIBLE ADJUSTMENT */
-.vertical-demand-table .action-cell {
-    text-align: center;
-    white-space: nowrap;
-    width: 20%; /* Reduced but sufficient width */
-    padding: 2px 4px !important; /* Minimal padding */
-}
+        .vertical-demand-table .action-cell {
+            text-align: center;
+            white-space: nowrap;
+            width: 20%;
+            padding: 2px 4px !important;
+        }
 
-/* Column width specifications */
-.vertical-demand-table th:first-child,
-.vertical-demand-table td.type-cell {
-    width: 20%;
-}
+        .vertical-demand-table th:first-child,
+        .vertical-demand-table td.type-cell {
+            width: 20%;
+        }
 
-.vertical-demand-table th:nth-child(2),
-.vertical-demand-table td.menu-cell {
-    width: 60%;
-    border-right: 1px solid #e2e8f0;
-}
+        .vertical-demand-table th:nth-child(2),
+        .vertical-demand-table td.menu-cell {
+            width: 60%;
+            border-right: 1px solid #e2e8f0;
+        }
 
-.vertical-demand-table th:last-child,
-.vertical-demand-table td.action-cell {
-    width: 20%;
-    min-width: 80px; /* Ensure minimum width for buttons */
-}
+        .vertical-demand-table th:last-child,
+        .vertical-demand-table td.action-cell {
+            width: 20%;
+            min-width: 80px;
+        }
 
-/* Compact button styling */
-.vertical-demand-table .icon-btn {
-    padding: 2px 3px !important; /* Very compact padding */
-    font-size: 12px !important; /* Slightly smaller icons */
-    margin: 0 1px;
-    width: 24px; /* Fixed width */
-    height: 20px; /* Fixed height */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-}
+        .vertical-demand-table .icon-btn {
+            padding: 2px 3px !important;
+            font-size: 12px !important;
+            margin: 0 1px;
+            width: 24px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-/* Action button container */
-.vertical-demand-table .action-cell > div {
-    display: flex;
-    gap: 2px;
-    justify-content: center;
-    align-items: center;
-    min-height: 20px;
-}
+        .vertical-demand-table .action-cell > div {
+            display: flex;
+            gap: 2px;
+            justify-content: center;
+            align-items: center;
+            min-height: 20px;
+        }
 
-/* Ensure buttons are properly visible */
-.vertical-demand-table .icon-btn i {
-    font-size: 11px; /* Ensure icon fits */
-}
+        .vertical-demand-table .icon-btn i {
+            font-size: 11px;
+        }
 
-/* Hover effects */
-.vertical-demand-table .icon-btn:hover {
-    background: rgba(0,0,0,0.1);
-    transform: scale(1.05);
-}
+        .vertical-demand-table .icon-btn:hover {
+            background: rgba(0,0,0,0.1);
+            transform: scale(1.05);
+        }
 
-/* Ensure proper vertical alignment */
-.vertical-demand-table td[rowspan] {
-    vertical-align: middle;
-}
+        .vertical-demand-table td[rowspan] {
+            vertical-align: middle;
+        }
 
-/* Mobile responsiveness */
-@media (max-width: 480px) {
-    .vertical-demand-table {
-        font-size: 11px;
-    }
-    
-    .vertical-demand-table th:last-child,
-    .vertical-demand-table td.action-cell {
-        width: 25%;
-        min-width: 70px;
-    }
-    
-    .vertical-demand-table .icon-btn {
-        padding: 1px 2px !important;
-        font-size: 11px !important;
-        width: 22px;
-        height: 18px;
-    }
-}
-/* Add to your existing CSS */
-.highlight-latest {
-    background-color: #fef3c7 !important;
-    border-left: 4px solid #f59e0b !important;
-    animation: pulse-highlight 2s ease-in-out;
-}
+        .highlight-latest {
+            background-color: #fef3c7 !important;
+            border-left: 4px solid #f59e0b !important;
+            animation: pulse-highlight 2s ease-in-out;
+        }
 
-@keyframes pulse-highlight {
-    0% { background-color: #fef3c7; }
-    50% { background-color: #fde68a; }
-    100% { background-color: #fef3c7; }
-}
+        @keyframes pulse-highlight {
+            0% { background-color: #fef3c7; }
+            50% { background-color: #fde68a; }
+            100% { background-color: #fef3c7; }
+        }
 
-.highlight-row {
-    background-color: #fef3c7;
-    border-left: 3px solid #f59e0b;
-}
-/* Add to your existing CSS */
-.highlight-latest-row {
-    background-color: #fef3c7 !important;
-    border-left: 3px solid #f59e0b !important;
-    animation: pulse-highlight 2s ease-in-out 3;
-}
+        .highlight-row {
+            background-color: #fef3c7;
+            border-left: 3px solid #f59e0b;
+        }
 
-@keyframes pulse-highlight {
-    0% { background-color: #fef3c7; }
-    50% { background-color: #fde68a; }
-    100% { background-color: #fef3c7; }
-}
+        .highlight-latest-row {
+            background-color: #fef3c7 !important;
+            border-left: 3px solid #f59e0b !important;
+            animation: pulse-highlight 2s ease-in-out 3;
+        }
+
+        @keyframes pulse-highlight {
+            0% { background-color: #fef3c7; }
+            50% { background-color: #fde68a; }
+            100% { background-color: #fef3c7; }
+        }
+
         .login-btn {
             background: var(--accent-orange);
             color: white;
@@ -538,7 +509,6 @@
             border-bottom: 1px solid #e2e8f0;
         }
         
-        /* NEW: Vertical demand table layout */
         .vertical-demand-table {
             width: 100%;
             margin-top: 8px;
@@ -621,6 +591,80 @@
             min-width: 150px;
         }
         
+        /* Weekly Menu Styles */
+        .weekly-menu-container {
+            margin-top: 15px;
+        }
+        
+        .week-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .week-nav-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .week-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .weekly-menu-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 13px;
+        }
+        
+        .weekly-menu-table th {
+            background: var(--primary);
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .weekly-menu-table td {
+            padding: 10px;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        .day-header {
+            background: var(--secondary);
+            color: white;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .today-cell {
+            background-color: #f0f9ff;
+            border-left: 3px solid var(--accent-blue);
+        }
+        
+        .meal-category {
+            margin-bottom: 8px;
+        }
+        
+        .meal-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .meal-label {
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        
         /* Modal styles */
         .modal {
             display: none;
@@ -677,6 +721,29 @@
             display: none;
         }
         
+        /* Custom multi-select for mobile */
+        .custom-multi-select {
+            display: none;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        
+        .user-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            background: #f1f5f9;
+            padding: 6px 10px;
+            border-radius: 20px;
+            font-size: 13px;
+        }
+        
+        .user-checkbox input {
+            width: auto;
+            margin: 0;
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 480px) {
             .menu-content {
@@ -728,6 +795,23 @@
             .vertical-demand-table th,
             .vertical-demand-table td {
                 padding: 4px 6px;
+            }
+            
+            .weekly-menu-table {
+                font-size: 11px;
+            }
+            
+            .weekly-menu-table th,
+            .weekly-menu-table td {
+                padding: 6px 4px;
+            }
+            
+            .multi-select {
+                display: none;
+            }
+            
+            .custom-multi-select {
+                display: flex;
             }
         }
         
@@ -791,6 +875,7 @@
         
         <div class="nav-tabs">
             <button class="tab-btn active" data-tab="mess-menu">Menu</button>
+            <button class="tab-btn" data-tab="weekly-menu">Weekly Menu</button>
             <button class="tab-btn" data-tab="demand">Demand</button>
             <button class="tab-btn" data-tab="users" id="users-tab" style="display: none;">Users</button>
             <button class="tab-btn" data-tab="notes">Notes</button>
@@ -820,9 +905,6 @@
                         <div id="today-dinner">-</div>
                     </div>
                 </div>
-                <div class="action-buttons" id="today-menu-actions">
-                    <!-- Buttons will be shown/hidden based on login status -->
-                </div>
             </div>
             
             <!-- Tomorrow's Menu Tile -->
@@ -843,9 +925,6 @@
                         <h4>Dinner</h4>
                         <div id="tomorrow-dinner">-</div>
                     </div>
-                </div>
-                <div class="action-buttons" id="tomorrow-menu-actions">
-                    <!-- Buttons will be shown/hidden based on login status -->
                 </div>
             </div>
             
@@ -891,6 +970,53 @@
             </div>
         </div>
         
+        <!-- Weekly Menu Section -->
+        <div id="weekly-menu" class="tab-content">
+            <h2 class="section-title">Weekly Menu</h2>
+            
+            <div class="week-nav">
+                <button class="week-nav-btn" id="prev-week">
+                    <i class="fas fa-chevron-left"></i> Previous Week
+                </button>
+                <div class="week-title" id="week-title">This Week</div>
+                <button class="week-nav-btn" id="next-week">
+                    Next Week <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+            
+            <div class="form-container" id="weekly-menu-admin" style="display: none;">
+                <h3>Add/Update Weekly Menu</h3>
+                <form id="weekly-menu-form">
+                    <div class="form-group">
+                        <label for="week-start-date">Week Starting Date</label>
+                        <input type="date" id="week-start-date" required>
+                    </div>
+                    <div id="weekly-menu-days">
+                        <!-- Weekly menu form will be generated here -->
+                    </div>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-plus"></i> Save Weekly Menu
+                    </button>
+                </form>
+            </div>
+            
+            <div class="weekly-menu-container">
+                <table class="weekly-menu-table" id="weekly-menu-table">
+                    <thead>
+                        <tr>
+                            <th>Day</th>
+                            <th>Breakfast</th>
+                            <th>Lunch</th>
+                            <th>Dinner</th>
+                        </tr>
+                    </thead>
+                    <tbody id="weekly-menu-body">
+                        <!-- Weekly menu will be populated here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
         <!-- Demand Section -->
         <div id="demand" class="tab-content">
             <h2 class="section-title">Demand</h2>
@@ -921,6 +1047,9 @@
                         <select id="demand-users" multiple class="multi-select" required>
                             <option value="">Select Users</option>
                         </select>
+                        <div id="custom-user-select" class="custom-multi-select">
+                            <!-- Custom checkboxes for mobile -->
+                        </div>
                     </div>
                     <div class="form-group">
                         <label for="demand-date">Date</label>
@@ -1197,6 +1326,7 @@
         // Firebase collections
         const COLLECTIONS = {
             MENU: 'menu',
+            WEEKLY_MENU: 'weekly_menu',
             DEMAND: 'demand',
             USERS: 'users',
             NOTES: 'notes'
@@ -1207,9 +1337,11 @@
         let isConnected = false;
         let isLoggedIn = false;
         let currentMenus = [];
+        let currentWeeklyMenus = [];
         let currentDemands = [];
         let currentUsers = [];
         let currentNotes = [];
+        let currentWeekOffset = 0; // For weekly menu navigation
 
         // Login persistence - Check if user was previously logged in
         function checkLoginStatus() {
@@ -1263,6 +1395,7 @@
             document.getElementById('user-info').style.display = 'flex';
             document.getElementById('users-tab').style.display = 'flex';
             document.getElementById('data-tab').style.display = 'flex';
+            document.getElementById('weekly-menu-admin').style.display = 'block';
             
             // Update action buttons visibility
             updateActionButtons();
@@ -1278,6 +1411,7 @@
             document.getElementById('user-info').style.display = 'none';
             document.getElementById('users-tab').style.display = 'none';
             document.getElementById('data-tab').style.display = 'none';
+            document.getElementById('weekly-menu-admin').style.display = 'none';
             
             // If currently on protected tabs, switch to first tab
             const activeTab = document.querySelector('.tab-btn.active').dataset.tab;
@@ -1295,58 +1429,6 @@
         }
 
         function updateActionButtons() {
-            // Update today's menu actions
-            const todayMenuActions = document.getElementById('today-menu-actions');
-            todayMenuActions.innerHTML = '';
-            
-            const tomorrowMenuActions = document.getElementById('tomorrow-menu-actions');
-            tomorrowMenuActions.innerHTML = '';
-            
-            if (isLoggedIn) {
-                todayMenuActions.innerHTML = `
-                    <button class="icon-btn edit-btn" id="edit-today-menu" title="Edit">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="icon-btn delete-btn" id="delete-today-menu" title="Delete">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                `;
-                
-                tomorrowMenuActions.innerHTML = `
-                    <button class="icon-btn edit-btn" id="edit-tomorrow-menu" title="Edit">
-                        <i class="fas fa-edit"></i>
-                    </button>
-                    <button class="icon-btn delete-btn" id="delete-tomorrow-menu" title="Delete">
-                        <i class="fas fa-trash"></i>
-                    </button>
-                `;
-                
-                // Reattach event listeners
-                document.getElementById('edit-today-menu').onclick = () => {
-                    const today = getToday();
-                    const todayMenu = currentMenus.find(menu => menu.date === today);
-                    if (todayMenu) openEditMenuModal(todayMenu);
-                };
-                
-                document.getElementById('delete-today-menu').onclick = () => {
-                    const today = getToday();
-                    const todayMenu = currentMenus.find(menu => menu.date === today);
-                    if (todayMenu) deleteMenu(todayMenu.id);
-                };
-                
-                document.getElementById('edit-tomorrow-menu').onclick = () => {
-                    const tomorrow = getTomorrow();
-                    const tomorrowMenu = currentMenus.find(menu => menu.date === tomorrow);
-                    if (tomorrowMenu) openEditMenuModal(tomorrowMenu);
-                };
-                
-                document.getElementById('delete-tomorrow-menu').onclick = () => {
-                    const tomorrow = getTomorrow();
-                    const tomorrowMenu = currentMenus.find(menu => menu.date === tomorrow);
-                    if (tomorrowMenu) deleteMenu(tomorrowMenu.id);
-                };
-            }
-            
             // Update table headers
             document.getElementById('menu-history-action-header').style.display = isLoggedIn ? 'table-cell' : 'none';
             document.getElementById('demand-history-action-header').style.display = isLoggedIn ? 'table-cell' : 'none';
@@ -1397,6 +1479,11 @@
                 // Add active class to clicked tab and corresponding content
                 button.classList.add('active');
                 document.getElementById(button.dataset.tab).classList.add('active');
+                
+                // Load weekly menu data if weekly menu tab is selected
+                if (button.dataset.tab === 'weekly-menu') {
+                    loadWeeklyMenuData();
+                }
             });
         });
 
@@ -1416,6 +1503,49 @@
         function formatDate(dateString) {
             const options = { month: 'short', day: 'numeric' };
             return new Date(dateString).toLocaleDateString(undefined, options);
+        }
+
+        // Get day name from date
+        function getDayName(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString(undefined, { weekday: 'long' });
+        }
+
+        // Get week start date (Monday)
+        function getWeekStartDate(offset = 0) {
+            const date = new Date();
+            const day = date.getDay();
+            const diff = date.getDate() - day + (day === 0 ? -6 : 1); // adjust when day is Sunday
+            const monday = new Date(date.setDate(diff));
+            monday.setDate(monday.getDate() + (offset * 7));
+            return monday.toISOString().split('T')[0];
+        }
+
+        // Get dates for a week
+        function getWeekDates(weekStartDate) {
+            const dates = [];
+            const startDate = new Date(weekStartDate);
+            
+            for (let i = 0; i < 7; i++) {
+                const date = new Date(startDate);
+                date.setDate(startDate.getDate() + i);
+                dates.push(date.toISOString().split('T')[0]);
+            }
+            
+            return dates;
+        }
+
+        // Format week title
+        function formatWeekTitle(weekStartDate) {
+            const startDate = new Date(weekStartDate);
+            const endDate = new Date(startDate);
+            endDate.setDate(startDate.getDate() + 6);
+            
+            const options = { month: 'short', day: 'numeric' };
+            const startStr = startDate.toLocaleDateString(undefined, options);
+            const endStr = endDate.toLocaleDateString(undefined, options);
+            
+            return `${startStr} - ${endStr}`;
         }
 
         // Modal functionality
@@ -1457,6 +1587,7 @@
             unsubscribeFunctions = [];
             
             loadMenuData();
+            loadWeeklyMenuData();
             loadDemandData();
             loadUsersData();
             loadNotesData();
@@ -1478,6 +1609,29 @@
             this.reset();
             document.getElementById('menu-date').value = getToday();
         });
+
+        // Auto-fill menu based on weekly menu when date changes
+        document.getElementById('menu-date').addEventListener('change', function() {
+            autoFillMenuFromWeekly(this.value);
+        });
+
+        function autoFillMenuFromWeekly(date) {
+            const dayName = getDayName(date);
+            const weeklyMenu = currentWeeklyMenus.find(menu => {
+                const weekStart = getWeekStartDate(currentWeekOffset);
+                const weekDates = getWeekDates(weekStart);
+                return weekDates.includes(date);
+            });
+            
+            if (weeklyMenu) {
+                const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
+                if (dayIndex !== -1 && weeklyMenu.days && weeklyMenu.days[dayIndex]) {
+                    document.getElementById('breakfast').value = weeklyMenu.days[dayIndex].breakfast || '';
+                    document.getElementById('lunch').value = weeklyMenu.days[dayIndex].lunch || '';
+                    document.getElementById('dinner').value = weeklyMenu.days[dayIndex].dinner || '';
+                }
+            }
+        }
 
         function addMenu(menuData) {
             // Check if menu for this date already exists
@@ -1664,18 +1818,200 @@
             }
         }
 
+        // WEEKLY MENU SECTION
+        document.getElementById('prev-week').addEventListener('click', () => {
+            currentWeekOffset--;
+            loadWeeklyMenuData();
+        });
+
+        document.getElementById('next-week').addEventListener('click', () => {
+            currentWeekOffset++;
+            loadWeeklyMenuData();
+        });
+
+        function loadWeeklyMenuData() {
+            const weekStartDate = getWeekStartDate(currentWeekOffset);
+            document.getElementById('week-title').textContent = formatWeekTitle(weekStartDate);
+            
+            // Check if weekly menu exists for this week
+            db.collection(COLLECTIONS.WEEKLY_MENU)
+                .where('weekStart', '==', weekStartDate)
+                .get()
+                .then((querySnapshot) => {
+                    if (!querySnapshot.empty) {
+                        const doc = querySnapshot.docs[0];
+                        const weeklyMenu = { id: doc.id, ...doc.data() };
+                        displayWeeklyMenu(weeklyMenu);
+                        populateWeeklyMenuForm(weeklyMenu);
+                    } else {
+                        // Create empty weekly menu
+                        const emptyWeeklyMenu = {
+                            weekStart: weekStartDate,
+                            days: Array(7).fill().map(() => ({ breakfast: '', lunch: '', dinner: '' }))
+                        };
+                        displayWeeklyMenu(emptyWeeklyMenu);
+                        populateWeeklyMenuForm(emptyWeeklyMenu);
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error loading weekly menu:', error);
+                });
+        }
+
+        function displayWeeklyMenu(weeklyMenu) {
+            const weeklyMenuBody = document.getElementById('weekly-menu-body');
+            const weekDates = getWeekDates(weeklyMenu.weekStart);
+            const today = getToday();
+            
+            weeklyMenuBody.innerHTML = '';
+            
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            
+            dayNames.forEach((dayName, index) => {
+                const date = weekDates[index];
+                const isToday = date === today;
+                const dayData = weeklyMenu.days[index] || { breakfast: '', lunch: '', dinner: '' };
+                
+                const row = document.createElement('tr');
+                if (isToday) {
+                    row.classList.add('today-cell');
+                }
+                
+                row.innerHTML = `
+                    <td class="day-header">${dayName}<br><small>${formatDate(date)}</small></td>
+                    <td>${dayData.breakfast || '-'}</td>
+                    <td>${dayData.lunch || '-'}</td>
+                    <td>${dayData.dinner || '-'}</td>
+                `;
+                
+                weeklyMenuBody.appendChild(row);
+            });
+        }
+
+        function populateWeeklyMenuForm(weeklyMenu) {
+            const weeklyMenuDays = document.getElementById('weekly-menu-days');
+            const weekDates = getWeekDates(weeklyMenu.weekStart);
+            
+            weeklyMenuDays.innerHTML = '';
+            document.getElementById('week-start-date').value = weeklyMenu.weekStart;
+            
+            const dayNames = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
+            
+            dayNames.forEach((dayName, index) => {
+                const date = weekDates[index];
+                const dayData = weeklyMenu.days[index] || { breakfast: '', lunch: '', dinner: '' };
+                
+                const daySection = document.createElement('div');
+                daySection.className = 'form-group';
+                daySection.innerHTML = `
+                    <h4>${dayName} (${formatDate(date)})</h4>
+                    <div class="form-group">
+                        <label for="weekly-breakfast-${index}">Breakfast</label>
+                        <input type="text" id="weekly-breakfast-${index}" value="${dayData.breakfast || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label for="weekly-lunch-${index}">Lunch</label>
+                        <input type="text" id="weekly-lunch-${index}" value="${dayData.lunch || ''}">
+                    </div>
+                    <div class="form-group">
+                        <label for="weekly-dinner-${index}">Dinner</label>
+                        <input type="text" id="weekly-dinner-${index}" value="${dayData.dinner || ''}">
+                    </div>
+                    <hr>
+                `;
+                
+                weeklyMenuDays.appendChild(daySection);
+            });
+        }
+
+        document.getElementById('weekly-menu-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (!isLoggedIn) {
+                alert('Please login to save weekly menu');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
+            const weekStart = document.getElementById('week-start-date').value;
+            const days = [];
+            
+            for (let i = 0; i < 7; i++) {
+                days.push({
+                    breakfast: document.getElementById(`weekly-breakfast-${i}`).value,
+                    lunch: document.getElementById(`weekly-lunch-${i}`).value,
+                    dinner: document.getElementById(`weekly-dinner-${i}`).value
+                });
+            }
+            
+            const weeklyMenuData = {
+                weekStart: weekStart,
+                days: days,
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            saveWeeklyMenu(weeklyMenuData);
+        });
+
+        function saveWeeklyMenu(weeklyMenuData) {
+            // Check if weekly menu for this week already exists
+            db.collection(COLLECTIONS.WEEKLY_MENU)
+                .where('weekStart', '==', weeklyMenuData.weekStart)
+                .get()
+                .then((querySnapshot) => {
+                    if (!querySnapshot.empty) {
+                        // Update existing weekly menu
+                        const doc = querySnapshot.docs[0];
+                        db.collection(COLLECTIONS.WEEKLY_MENU).doc(doc.id).update({
+                            days: weeklyMenuData.days,
+                            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                        }).then(() => {
+                            console.log('Weekly menu updated successfully for week:', weeklyMenuData.weekStart);
+                            alert('Weekly menu updated successfully!');
+                        });
+                    } else {
+                        // Add new weekly menu
+                        db.collection(COLLECTIONS.WEEKLY_MENU).add(weeklyMenuData)
+                            .then(() => {
+                                console.log('New weekly menu added for week:', weeklyMenuData.weekStart);
+                                alert('Weekly menu saved successfully!');
+                            });
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error saving weekly menu:', error);
+                    alert('Error saving weekly menu. Please check connection.');
+                });
+        }
+
         // DEMAND SECTION - UPDATED WITH VERTICAL LAYOUT
         document.getElementById('demand-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const users = Array.from(document.getElementById('demand-users').selectedOptions).map(option => option.value);
+            // Get selected users from custom checkboxes for mobile
+            const selectedUsers = [];
+            document.querySelectorAll('#custom-user-select input:checked').forEach(checkbox => {
+                selectedUsers.push(checkbox.value);
+            });
+            
+            // Fallback to regular select for desktop
+            if (selectedUsers.length === 0) {
+                const users = Array.from(document.getElementById('demand-users').selectedOptions).map(option => option.value);
+                selectedUsers.push(...users);
+            }
+            
+            if (selectedUsers.length === 0) {
+                alert('Please select at least one user');
+                return;
+            }
+            
             const type = document.getElementById('demand-type').value;
             const date = document.getElementById('demand-date').value;
             const menu = document.getElementById('demand-menu').value;
             const remarks = document.getElementById('demand-remarks').value;
             
             // Add demand for each selected user
-            users.forEach(user => {
+            selectedUsers.forEach(user => {
                 const demandData = {
                     date: date,
                     user: user,
@@ -1692,6 +2028,11 @@
             document.getElementById('demand-date').value = getToday();
             // Reset the menu field after submission
             document.getElementById('demand-menu').value = '';
+            
+            // Clear custom checkboxes
+            document.querySelectorAll('#custom-user-select input').forEach(checkbox => {
+                checkbox.checked = false;
+            });
         });
 
         // Auto-fill menu based on selected type and date
@@ -1708,7 +2049,7 @@
             const date = document.getElementById('demand-date').value;
             const menuField = document.getElementById('demand-menu');
             
-            // Only auto-fill for breakfast, lunch, dinner types
+            // First try to get from daily menu
             if (type && type !== 'other' && date) {
                 const menuForDate = currentMenus.find(menu => menu.date === date);
                 if (menuForDate) {
@@ -1724,7 +2065,34 @@
                             break;
                     }
                 } else {
-                    menuField.value = '';
+                    // If no daily menu, try to get from weekly menu
+                    const dayName = getDayName(date);
+                    const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
+                    
+                    if (dayIndex !== -1) {
+                        const weeklyMenu = currentWeeklyMenus.find(menu => {
+                            const weekDates = getWeekDates(menu.weekStart);
+                            return weekDates.includes(date);
+                        });
+                        
+                        if (weeklyMenu && weeklyMenu.days && weeklyMenu.days[dayIndex]) {
+                            switch(type) {
+                                case 'breakfast':
+                                    menuField.value = weeklyMenu.days[dayIndex].breakfast || '';
+                                    break;
+                                case 'lunch':
+                                    menuField.value = weeklyMenu.days[dayIndex].lunch || '';
+                                    break;
+                                case 'dinner':
+                                    menuField.value = weeklyMenu.days[dayIndex].dinner || '';
+                                    break;
+                            }
+                        } else {
+                            menuField.value = '';
+                        }
+                    } else {
+                        menuField.value = '';
+                    }
                 }
             } else if (type === 'other') {
                 menuField.value = '';
@@ -1770,177 +2138,142 @@
         }
 
         // NEW: Vertical layout for today's demand
-     function displayTodayDemand(demands) {
-    const today = getToday();
-    const todayDemands = demands.filter(demand => demand.date === today);
-    const todayDemandContent = document.getElementById('today-demand-content');
-    
-    // Sort demands by creation time to find the latest
-    const sortedDemands = [...todayDemands].sort((a, b) => {
-        const timeA = a.createdAt ? a.createdAt.toDate().getTime() : 0;
-        const timeB = b.createdAt ? b.createdAt.toDate().getTime() : 0;
-        return timeB - timeA; // Latest first
-    });
-    
-    const latestDemandId = sortedDemands.length > 0 ? sortedDemands[0].id : null;
-    
-    // Group demands by user
-    const userDemands = {};
-    todayDemands.forEach(demand => {
-        if (!userDemands[demand.user]) {
-            userDemands[demand.user] = [];
-        }
-        userDemands[demand.user].push(demand);
-    });
-    
-    todayDemandContent.innerHTML = '';
-    
-    if (Object.keys(userDemands).length === 0) {
-        todayDemandContent.innerHTML = '<p style="text-align:center; padding:10px;">No demands for today.</p>';
-        return;
-    }
-    
-    for (const user in userDemands) {
-        const userTile = document.createElement('div');
-        userTile.className = 'user-tile';
-        
-        // Check if this user tile contains the latest demand
-        // const hasLatestDemand = userDemands[user].some(demand => demand.id === latestDemandId);
-        // if (hasLatestDemand) {
-           //  userTile.classList.add('highlight-latest');
-       // }
-        
-        let demandHTML = `
-            <div class="user-tile-header">
-                <h4>${user}</h4>
-                <span>${formatDate(today)}</span>
-            </div>
-            <table class="vertical-demand-table">
-                <thead>
-                    <tr>
-                        <th>Type</th>
-                        <th class="menu-column">Menu</th>
-                        <th class="action-column">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-        `;
-        
-        // Group demands by type
-        const demandItems = {
-            breakfast: [],
-            lunch: [],
-            dinner: [],
-            other: []
-        };
-        
-        // Group demands by type
-        userDemands[user].forEach(demand => {
-            if (demandItems[demand.type]) {
-                demandItems[demand.type].push(demand);
+        function displayTodayDemand(demands) {
+            const today = getToday();
+            const todayDemands = demands.filter(demand => demand.date === today);
+            const todayDemandContent = document.getElementById('today-demand-content');
+            
+            // Sort demands by creation time to find the latest
+            const sortedDemands = [...todayDemands].sort((a, b) => {
+                const timeA = a.createdAt ? a.createdAt.toDate().getTime() : 0;
+                const timeB = b.createdAt ? b.createdAt.toDate().getTime() : 0;
+                return timeB - timeA; // Latest first
+            });
+            
+            const latestDemandId = sortedDemands.length > 0 ? sortedDemands[0].id : null;
+            
+            // Group demands by user
+            const userDemands = {};
+            todayDemands.forEach(demand => {
+                if (!userDemands[demand.user]) {
+                    userDemands[demand.user] = [];
+                }
+                userDemands[demand.user].push(demand);
+            });
+            
+            todayDemandContent.innerHTML = '';
+            
+            if (Object.keys(userDemands).length === 0) {
+                todayDemandContent.innerHTML = '<p style="text-align:center; padding:10px;">No demands for today.</p>';
+                return;
             }
-        });
-        
-        // Create rows with merged type cells
-        for (const type in demandItems) {
-            if (demandItems[type].length > 0) {
-                const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
-                const rowCount = demandItems[type].length;
+            
+            for (const user in userDemands) {
+                const userTile = document.createElement('div');
+                userTile.className = 'user-tile';
                 
-                // First row with type label and rowspan
-                const isLatestRow = demandItems[type][0].id === latestDemandId;
-                const rowClass = isLatestRow ? 'highlight-row' : '';
-                
-                demandHTML += `
-                    <tr class="${rowClass}">
-                        <td rowspan="${rowCount}" class="type-cell">${typeLabel}</td>
-                        <td class="menu-cell">${demandItems[type][0].menu}</td>
-                        <td class="action-cell">
-                            <div class="action-cell">
-                                <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][0].id}')" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][0].id}')" title="Delete">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>
-                        </td>
-                    </tr>
+                let demandHTML = `
+                    <div class="user-tile-header">
+                        <h4>${user}</h4>
+                        <span>${formatDate(today)}</span>
+                    </div>
+                    <table class="vertical-demand-table">
+                        <thead>
+                            <tr>
+                                <th>Type</th>
+                                <th class="menu-column">Menu</th>
+                                <th class="action-column">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                 `;
                 
-                // Remaining rows for the same type (without type cell)
-                for (let i = 1; i < demandItems[type].length; i++) {
-                    const isLatestSubRow = demandItems[type][i].id === latestDemandId;
-                    const subRowClass = isLatestSubRow ? 'highlight-row' : '';
-                    
+                // Group demands by type
+                const demandItems = {
+                    breakfast: [],
+                    lunch: [],
+                    dinner: [],
+                    other: []
+                };
+                
+                // Group demands by type
+                userDemands[user].forEach(demand => {
+                    if (demandItems[demand.type]) {
+                        demandItems[demand.type].push(demand);
+                    }
+                });
+                
+                // Create rows with merged type cells
+                for (const type in demandItems) {
+                    if (demandItems[type].length > 0) {
+                        const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
+                        const rowCount = demandItems[type].length;
+                        
+                        // First row with type label and rowspan
+                        const isLatestRow = demandItems[type][0].id === latestDemandId;
+                        const rowClass = isLatestRow ? 'highlight-row' : '';
+                        
+                        demandHTML += `
+                            <tr class="${rowClass}">
+                                <td rowspan="${rowCount}" class="type-cell">${typeLabel}</td>
+                                <td class="menu-cell">${demandItems[type][0].menu}</td>
+                                <td class="action-cell">
+                                    <div class="action-cell">
+                                        <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][0].id}')" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][0].id}')" title="Delete">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        `;
+                        
+                        // Remaining rows for the same type (without type cell)
+                        for (let i = 1; i < demandItems[type].length; i++) {
+                            const isLatestSubRow = demandItems[type][i].id === latestDemandId;
+                            const subRowClass = isLatestSubRow ? 'highlight-row' : '';
+                            
+                            demandHTML += `
+                                <tr class="${subRowClass}">
+                                    <td class="menu-cell">${demandItems[type][i].menu}</td>
+                                    <td class="action-cell">
+                                        <div class="action-cell">
+                                            <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][i].id}')" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][i].id}')" title="Delete">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            `;
+                        }
+                    }
+                }
+                
+                // Add remarks row if any
+                const remarks = userDemands[user].filter(d => d.remarks).map(d => d.remarks);
+                if (remarks.length > 0) {
                     demandHTML += `
-                        <tr class="${subRowClass}">
-                            <td class="menu-cell">${demandItems[type][i].menu}</td>
-                            <td class="action-cell">
-                                <div class="action-cell">
-                                    <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demandItems[type][i].id}')" title="Edit">
-                                        <i class="fas fa-edit"></i>
-                                    </button>
-                                    <button class="icon-btn delete-btn" onclick="deleteDemand('${demandItems[type][i].id}')" title="Delete">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
+                        <tr>
+                            <td>Remarks</td>
+                            <td class="menu-cell" colspan="2">${remarks.join(', ')}</td>
                         </tr>
                     `;
                 }
+                
+                demandHTML += `
+                        </tbody>
+                    </table>
+                `;
+                
+                userTile.innerHTML = demandHTML;
+                todayDemandContent.appendChild(userTile);
             }
         }
-        
-        // Add remarks row if any
-        const remarks = userDemands[user].filter(d => d.remarks).map(d => d.remarks);
-        if (remarks.length > 0) {
-            demandHTML += `
-                <tr>
-                    <td>Remarks</td>
-                    <td class="menu-cell" colspan="2">${remarks.join(', ')}</td>
-                </tr>
-            `;
-        }
-        
-        demandHTML += `
-                </tbody>
-            </table>
-        `;
-        
-        userTile.innerHTML = demandHTML;
-        todayDemandContent.appendChild(userTile);
-    }
-}
-function deleteUserDemandsByType(user, date, type) {
-    if (!isLoggedIn) {
-        alert('Please login to delete demands');
-        document.getElementById('open-login-btn').click();
-        return;
-    }
-    
-    if (confirm(`Are you sure you want to delete all ${type} demands for ${user} on ${formatDate(date)}?`)) {
-        db.collection(COLLECTIONS.DEMAND)
-            .where('date', '==', date)
-            .where('user', '==', user)
-            .where('type', '==', type)
-            .get()
-            .then((querySnapshot) => {
-                const batch = db.batch();
-                querySnapshot.forEach((doc) => {
-                    batch.delete(doc.ref);
-                });
-                return batch.commit();
-            })
-            .then(() => {
-                console.log(`All ${type} demands deleted for ${user}`);
-            })
-            .catch((error) => {
-                console.error('Error deleting demands:', error);
-                alert('Error deleting demands. Please check connection.');
-            });
-    }
-}
 
         function populateUserFilter() {
             const userFilter = document.getElementById('user-filter');
@@ -1959,13 +2292,6 @@ function deleteUserDemandsByType(user, date, type) {
                 userFilter.appendChild(option);
             });
         }
-        // Helper function to format timestamps for comparison
-function getDemandTimestamp(demand) {
-    if (demand.createdAt && demand.createdAt.toDate) {
-        return demand.createdAt.toDate().getTime();
-    }
-    return 0;
-}
 
         function displayDemandHistory(demands) {
             const historyBody = document.getElementById('demand-history-body');
@@ -2202,18 +2528,33 @@ function getDemandTimestamp(demand) {
                 .get()
                 .then((querySnapshot) => {
                     const userDropdown = document.getElementById('demand-users');
+                    const customUserSelect = document.getElementById('custom-user-select');
                     
                     // Clear existing options except the first one
                     while (userDropdown.options.length > 1) {
                         userDropdown.remove(1);
                     }
                     
+                    // Clear custom checkboxes
+                    customUserSelect.innerHTML = '';
+                    
                     querySnapshot.forEach((doc) => {
                         const user = doc.data();
+                        
+                        // Add to regular dropdown
                         const option = document.createElement('option');
                         option.value = user.name;
                         option.textContent = user.name;
                         userDropdown.appendChild(option);
+                        
+                        // Add to custom checkboxes for mobile
+                        const checkboxContainer = document.createElement('div');
+                        checkboxContainer.className = 'user-checkbox';
+                        checkboxContainer.innerHTML = `
+                            <input type="checkbox" id="user-${user.name}" value="${user.name}">
+                            <label for="user-${user.name}">${user.name}</label>
+                        `;
+                        customUserSelect.appendChild(checkboxContainer);
                     });
                 })
                 .catch((error) => {
@@ -2335,8 +2676,9 @@ function getDemandTimestamp(demand) {
             
             try {
                 // Get all data from all collections
-                const [menuSnapshot, demandSnapshot, usersSnapshot, notesSnapshot] = await Promise.all([
+                const [menuSnapshot, weeklyMenuSnapshot, demandSnapshot, usersSnapshot, notesSnapshot] = await Promise.all([
                     db.collection(COLLECTIONS.MENU).get(),
+                    db.collection(COLLECTIONS.WEEKLY_MENU).get(),
                     db.collection(COLLECTIONS.DEMAND).get(),
                     db.collection(COLLECTIONS.USERS).get(),
                     db.collection(COLLECTIONS.NOTES).get()
@@ -2344,6 +2686,7 @@ function getDemandTimestamp(demand) {
                 
                 const exportData = {
                     menu: menuSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })),
+                    weekly_menu: weeklyMenuSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })),
                     demand: demandSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })),
                     users: usersSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })),
                     notes: notesSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })),
@@ -2412,6 +2755,15 @@ function getDemandTimestamp(demand) {
                     });
                 }
                 
+                if (importData.weekly_menu) {
+                    importData.weekly_menu.forEach(item => {
+                        const docRef = db.collection(COLLECTIONS.WEEKLY_MENU).doc();
+                        const { id, ...data } = item;
+                        data.createdAt = firebase.firestore.FieldValue.serverTimestamp();
+                        batch.set(docRef, data);
+                    });
+                }
+                
                 if (importData.demand) {
                     importData.demand.forEach(item => {
                         const docRef = db.collection(COLLECTIONS.DEMAND).doc();
@@ -2469,7 +2821,7 @@ function getDemandTimestamp(demand) {
             
             try {
                 // Delete all documents from all collections
-                const collections = [COLLECTIONS.MENU, COLLECTIONS.DEMAND, COLLECTIONS.USERS, COLLECTIONS.NOTES];
+                const collections = [COLLECTIONS.MENU, COLLECTIONS.WEEKLY_MENU, COLLECTIONS.DEMAND, COLLECTIONS.USERS, COLLECTIONS.NOTES];
                 
                 for (const collectionName of collections) {
                     const snapshot = await db.collection(collectionName).get();
@@ -2520,11 +2872,27 @@ function getDemandTimestamp(demand) {
             
             console.log('App initialization complete');
         };
+
+        // Handle app visibility changes to prevent session issues
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                // App became visible again, refresh data
+                console.log('App became visible, refreshing data...');
+                monitorConnection();
+                if (isLoggedIn) {
+                    loadAllData();
+                }
+            }
+        });
+
+        // Handle page focus to prevent session issues
+        window.addEventListener('focus', function() {
+            console.log('Window focused, refreshing data...');
+            monitorConnection();
+            if (isLoggedIn) {
+                loadAllData();
+            }
+        });
     </script>
 </body>
 </html>
-
-
-
-
-
