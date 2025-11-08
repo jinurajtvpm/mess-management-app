@@ -745,87 +745,109 @@
         }
         
         /* Mobile optimizations */
-        @media (max-width: 480px) {
-            .menu-content {
-                grid-template-columns: 1fr;
-                gap: 8px;
-            }
-            
-            .nav-tabs {
-                flex-direction: column;
-            }
-            
-            .tab-btn {
-                width: 100%;
-                margin: 1px 0;
-            }
-            
-            .top-bar {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 8px;
-            }
-            
-            .connection-status, .login-btn, .user-info {
-                font-size: 10px;
-                padding: 5px 8px;
-            }
-            
-            .status-dot {
-                width: 8px;
-                height: 8px;
-            }
-            
-            .login-btn i, .user-info i {
-                font-size: 10px;
-            }
-            
-            .filter-controls {
-                flex-direction: column;
-            }
-            
-            .filter-group {
-                min-width: 100%;
-            }
-            
-            .vertical-demand-table {
-                font-size: 11px;
-            }
-            
-            .vertical-demand-table th,
-            .vertical-demand-table td {
-                padding: 4px 6px;
-            }
-            
-            .weekly-menu-table {
-                font-size: 11px;
-            }
-            
-            .weekly-menu-table th,
-            .weekly-menu-table td {
-                padding: 6px 4px;
-            }
-            
-            .multi-select {
-                display: none;
-            }
-            
-            .custom-multi-select {
-                display: flex;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .top-bar {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            
-            .connection-status, .login-btn, .user-info {
-                justify-content: center;
-                text-align: center;
-            }
-        }
+@media (max-width: 480px) {
+    .menu-content {
+        grid-template-columns: 1fr;
+        gap: 8px;
+    }
+    
+    .nav-tabs {
+        flex-direction: column;
+    }
+    
+    .tab-btn {
+        width: 100%;
+        margin: 1px 0;
+    }
+    
+    .top-bar {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+    }
+    
+    .connection-status, .login-btn, .user-info {
+        font-size: 10px;
+        padding: 5px 8px;
+    }
+    
+    .status-dot {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .login-btn i, .user-info i {
+        font-size: 10px;
+    }
+    
+    .filter-controls {
+        flex-direction: column;
+    }
+    
+    .filter-group {
+        min-width: 100%;
+    }
+    
+    .vertical-demand-table {
+        font-size: 11px;
+    }
+    
+    .vertical-demand-table th,
+    .vertical-demand-table td {
+        padding: 4px 6px;
+    }
+    
+    .weekly-menu-table {
+        font-size: 11px;
+    }
+    
+    .weekly-menu-table th,
+    .weekly-menu-table td {
+        padding: 6px 4px;
+    }
+    
+    /* Improved mobile form styling */
+    .form-container {
+        padding: 10px;
+    }
+    
+    .multi-select {
+        display: block !important;
+        height: auto;
+        min-height: 100px;
+        -webkit-appearance: menulist;
+    }
+    
+    .custom-multi-select {
+        display: none;
+    }
+    
+    .mobile-user-hint {
+        display: block !important;
+    }
+    
+    /* Better touch targets for mobile */
+    .btn, .icon-btn, .tab-btn {
+        min-height: 44px;
+    }
+    
+    input, select, textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .connection-status, .login-btn, .user-info {
+        justify-content: center;
+        text-align: center;
+    }
+}
     </style>
 </head>
 <body>
@@ -1017,100 +1039,100 @@
             </div>
         </div>
         
-        <!-- Demand Section -->
-        <div id="demand" class="tab-content">
-            <h2 class="section-title">Demand</h2>
-            
-            <!-- Today's Demand Tile -->
-            <div id="today-demand-tile">
-                <h3>Today's Demand</h3>
-                <div id="today-demand-content" class="user-tiles">
-                    <!-- Content will be populated dynamically -->
+       <!-- Demand Section -->
+<div id="demand" class="tab-content">
+    <h2 class="section-title">Demand</h2>
+    
+    <!-- Today's Demand Tile -->
+    <div id="today-demand-tile">
+        <h3>Today's Demand</h3>
+        <div id="today-demand-content" class="user-tiles">
+            <!-- Content will be populated dynamically -->
+        </div>
+    </div>
+    
+    <div class="form-container">
+        <h3>Add Demand</h3>
+        <form id="demand-form">
+            <div class="form-group">
+                <label for="demand-type">Type</label>
+                <select id="demand-type" required>
+                    <option value="">Select Type</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="demand-date">Date</label>
+                <input type="date" id="demand-date" required>
+            </div>
+            <div class="form-group">
+                <label for="demand-users">Users (Multiple)</label>
+                <select id="demand-users" multiple class="multi-select" required>
+                    <option value="">Select Users</option>
+                </select>
+                <div class="mobile-user-hint" style="display: none; font-size: 12px; color: #666; margin-top: 5px;">
+                    <i class="fas fa-info-circle"></i> Tap and hold to select multiple users
                 </div>
             </div>
-            
-            <div class="form-container">
-                <h3>Add Demand</h3>
-                <form id="demand-form">
-                    <div class="form-group">
-                        <label for="demand-type">Type</label>
-                        <select id="demand-type" required>
-                            <option value="">Select Type</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="demand-date">Date</label>
-                        <input type="date" id="demand-date" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="demand-users">Users (Multiple)</label>
-                        <select id="demand-users" multiple class="multi-select" required>
-                            <option value="">Select Users</option>
-                        </select>
-                        <div id="custom-user-select" class="custom-multi-select">
-                            <!-- Custom checkboxes for mobile -->
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="demand-menu">Menu</label>
-                        <input type="text" id="demand-menu" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="demand-remarks">Remarks</label>
-                        <textarea id="demand-remarks" rows="2"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-plus"></i> Add Demand
-                    </button>
-                </form>
+            <div class="form-group">
+                <label for="demand-menu">Menu</label>
+                <input type="text" id="demand-menu" required>
             </div>
-            
-            <div class="history-data">
-                <h3>Demand History</h3>
-                
-                <!-- Filter Controls -->
-                <div class="filter-controls">
-                    <div class="filter-group">
-                        <label for="user-filter">Filter by User</label>
-                        <select id="user-filter">
-                            <option value="">All Users</option>
-                        </select>
-                    </div>
-                    <div class="filter-group">
-                        <label for="date-filter">Filter by Date</label>
-                        <input type="date" id="date-filter">
-                    </div>
-                    <div class="filter-group">
-                        <label for="type-filter">Filter by Type</label>
-                        <select id="type-filter">
-                            <option value="">All Types</option>
-                            <option value="breakfast">Breakfast</option>
-                            <option value="lunch">Lunch</option>
-                            <option value="dinner">Dinner</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <table id="demand-history">
-                    <thead>
-                        <tr>
-                            <th>Date</th>
-                            <th>User</th>
-                            <th>Type</th>
-                            <th>Menu</th>
-                            <th>Remarks</th>
-                            <th id="demand-history-action-header">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody id="demand-history-body"></tbody>
-                </table>
+            <div class="form-group">
+                <label for="demand-remarks">Remarks</label>
+                <textarea id="demand-remarks" rows="2"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" id="demand-submit-btn">
+                <i class="fas fa-plus"></i> Add Demand
+            </button>
+        </form>
+    </div>
+    
+    <div class="history-data">
+        <h3>Demand History</h3>
+        
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <div class="filter-group">
+                <label for="user-filter">Filter by User</label>
+                <select id="user-filter">
+                    <option value="">All Users</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <label for="date-filter">Filter by Date</label>
+                <input type="date" id="date-filter">
+            </div>
+            <div class="filter-group">
+                <label for="type-filter">Filter by Type</label>
+                <select id="type-filter">
+                    <option value="">All Types</option>
+                    <option value="breakfast">Breakfast</option>
+                    <option value="lunch">Lunch</option>
+                    <option value="dinner">Dinner</option>
+                    <option value="other">Other</option>
+                </select>
             </div>
         </div>
+        
+        <table id="demand-history">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>User</th>
+                    <th>Type</th>
+                    <th>Menu</th>
+                    <th>Remarks</th>
+                    <th id="demand-history-action-header">Action</th>
+                </tr>
+            </thead>
+            <tbody id="demand-history-body"></tbody>
+        </table>
+    </div>
+</div>
         
         <!-- Users Section -->
         <div id="users" class="tab-content">
@@ -1981,135 +2003,180 @@
                 });
         }
 
-        // DEMAND SECTION - UPDATED WITH VERTICAL LAYOUT
-        document.getElementById('demand-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get selected users from custom checkboxes for mobile
-            const selectedUsers = [];
-            document.querySelectorAll('#custom-user-select input:checked').forEach(checkbox => {
-                selectedUsers.push(checkbox.value);
-            });
-            
-            // Fallback to regular select for desktop
-            if (selectedUsers.length === 0) {
-                const users = Array.from(document.getElementById('demand-users').selectedOptions).map(option => option.value);
-                selectedUsers.push(...users);
-            }
-            
-            if (selectedUsers.length === 0) {
-                alert('Please select at least one user');
-                return;
-            }
-            
-            const type = document.getElementById('demand-type').value;
-            const date = document.getElementById('demand-date').value;
-            const menu = document.getElementById('demand-menu').value;
-            const remarks = document.getElementById('demand-remarks').value;
-            
-            // Add demand for each selected user
-            selectedUsers.forEach(user => {
-                const demandData = {
-                    date: date,
-                    user: user,
-                    type: type,
-                    menu: menu,
-                    remarks: remarks,
-                    createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                };
-                
-                addDemand(demandData);
-            });
-            
+       // DEMAND SECTION - FIXED FOR MOBILE BROWSERS
+document.getElementById('demand-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Get selected users from the multi-select
+    const selectedUsers = Array.from(document.getElementById('demand-users').selectedOptions).map(option => option.value);
+    
+    // Filter out empty values
+    const validUsers = selectedUsers.filter(user => user && user.trim() !== '');
+    
+    if (validUsers.length === 0) {
+        alert('Please select at least one user');
+        return;
+    }
+    
+    const type = document.getElementById('demand-type').value;
+    const date = document.getElementById('demand-date').value;
+    const menu = document.getElementById('demand-menu').value;
+    const remarks = document.getElementById('demand-remarks').value;
+    
+    // Validate all required fields
+    if (!type || !date || !menu) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    // Show loading state
+    const submitBtn = document.getElementById('demand-submit-btn');
+    const originalText = submitBtn.innerHTML;
+    submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Adding...';
+    submitBtn.disabled = true;
+    
+    // Add demand for each selected user
+    let promises = [];
+    validUsers.forEach(user => {
+        const demandData = {
+            date: date,
+            user: user,
+            type: type,
+            menu: menu,
+            remarks: remarks,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        };
+        
+        promises.push(addDemand(demandData));
+    });
+    
+    // Wait for all demands to be added
+    Promise.all(promises)
+        .then(() => {
+            // Reset form
             this.reset();
             document.getElementById('demand-date').value = getToday();
-            // Reset the menu field after submission
-            document.getElementById('demand-menu').value = '';
             
-            // Clear custom checkboxes
-            document.querySelectorAll('#custom-user-select input').forEach(checkbox => {
-                checkbox.checked = false;
+            // Show success message
+            alert('Demand added successfully!');
+            
+            // Restore button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        })
+        .catch((error) => {
+            console.error('Error adding demands:', error);
+            alert('Error adding demand. Please check connection.');
+            
+            // Restore button state
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
+        });
+});
+
+// Auto-fill menu based on selected type and date - FROM WEEKLY MENU ONLY
+document.getElementById('demand-type').addEventListener('change', function() {
+    autoFillMenuFieldFromWeekly();
+});
+
+document.getElementById('demand-date').addEventListener('change', function() {
+    autoFillMenuFieldFromWeekly();
+});
+
+function autoFillMenuFieldFromWeekly() {
+    const type = document.getElementById('demand-type').value;
+    const date = document.getElementById('demand-date').value;
+    const menuField = document.getElementById('demand-menu');
+    
+    // Only auto-fill for breakfast, lunch, dinner types
+    if (type && type !== 'other' && date) {
+        // Get from weekly menu only
+        const dayName = getDayName(date);
+        const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
+        
+        if (dayIndex !== -1 && weeklyMenuFormData.days && weeklyMenuFormData.days[dayIndex]) {
+            switch(type) {
+                case 'breakfast':
+                    menuField.value = weeklyMenuFormData.days[dayIndex].breakfast || '';
+                    break;
+                case 'lunch':
+                    menuField.value = weeklyMenuFormData.days[dayIndex].lunch || '';
+                    break;
+                case 'dinner':
+                    menuField.value = weeklyMenuFormData.days[dayIndex].dinner || '';
+                    break;
+            }
+        } else {
+            menuField.value = '';
+        }
+    } else if (type === 'other') {
+        menuField.value = '';
+    }
+}
+
+function addDemand(demandData) {
+    return db.collection(COLLECTIONS.DEMAND).add(demandData)
+        .catch((error) => {
+            console.error('Error adding demand:', error);
+            throw error; // Re-throw to handle in Promise.all
+        });
+}
+
+// Improved user dropdown population
+function populateUserDropdown() {
+    db.collection(COLLECTIONS.USERS)
+        .orderBy('name')
+        .get()
+        .then((querySnapshot) => {
+            const userDropdown = document.getElementById('demand-users');
+            
+            // Clear existing options except the first one
+            while (userDropdown.options.length > 1) {
+                userDropdown.remove(1);
+            }
+            
+            querySnapshot.forEach((doc) => {
+                const user = doc.data();
+                
+                // Add to regular dropdown
+                const option = document.createElement('option');
+                option.value = user.name;
+                option.textContent = user.name;
+                userDropdown.appendChild(option);
+            });
+            
+            // Show mobile hint if on mobile
+            if (window.innerWidth <= 480) {
+                document.querySelector('.mobile-user-hint').style.display = 'block';
+            }
+        })
+        .catch((error) => {
+            console.error('Error loading users for dropdown:', error);
+        });
+}
+
+// Detect mobile devices and adjust form behavior
+function isMobileDevice() {
+    return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+}
+
+// Initialize mobile-specific behaviors
+if (isMobileDevice()) {
+    document.addEventListener('DOMContentLoaded', function() {
+        // Ensure proper form rendering on mobile
+        const forms = document.querySelectorAll('form');
+        forms.forEach(form => {
+            form.addEventListener('touchstart', function() {
+                // Add touch-friendly styles
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            form.addEventListener('touchend', function() {
+                this.style.transform = 'scale(1)';
             });
         });
-
-        // Auto-fill menu based on selected type and date - FROM WEEKLY MENU ONLY
-        document.getElementById('demand-type').addEventListener('change', function() {
-            autoFillMenuFieldFromWeekly();
-        });
-
-        document.getElementById('demand-date').addEventListener('change', function() {
-            autoFillMenuFieldFromWeekly();
-        });
-
-        function autoFillMenuFieldFromWeekly() {
-            const type = document.getElementById('demand-type').value;
-            const date = document.getElementById('demand-date').value;
-            const menuField = document.getElementById('demand-menu');
-            
-            // Only auto-fill for breakfast, lunch, dinner types
-            if (type && type !== 'other' && date) {
-                // Get from weekly menu only
-                const dayName = getDayName(date);
-                const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
-                
-                if (dayIndex !== -1 && weeklyMenuFormData.days && weeklyMenuFormData.days[dayIndex]) {
-                    switch(type) {
-                        case 'breakfast':
-                            menuField.value = weeklyMenuFormData.days[dayIndex].breakfast || '';
-                            break;
-                        case 'lunch':
-                            menuField.value = weeklyMenuFormData.days[dayIndex].lunch || '';
-                            break;
-                        case 'dinner':
-                            menuField.value = weeklyMenuFormData.days[dayIndex].dinner || '';
-                            break;
-                    }
-                } else {
-                    menuField.value = '';
-                }
-            } else if (type === 'other') {
-                menuField.value = '';
-            }
-        }
-
-        function addDemand(demandData) {
-            db.collection(COLLECTIONS.DEMAND).add(demandData)
-                .catch((error) => {
-                    console.error('Error adding demand:', error);
-                    alert('Error adding demand. Please check connection.');
-                });
-        }
-
-        function loadDemandData() {
-            const unsubscribe = db.collection(COLLECTIONS.DEMAND)
-                .orderBy('date', 'desc')
-                .onSnapshot((querySnapshot) => {
-                    currentDemands = [];
-                    querySnapshot.forEach((doc) => {
-                        const data = doc.data();
-                        currentDemands.push({ 
-                            id: doc.id, 
-                            ...data,
-                            // Ensure all fields have proper values
-                            date: data.date || '',
-                            user: data.user || '',
-                            type: data.type || '',
-                            menu: data.menu || '',
-                            remarks: data.remarks || ''
-                        });
-                    });
-                    console.log('Demand data loaded:', currentDemands.length, 'items');
-                    displayTodayDemand(currentDemands);
-                    displayDemandHistory(currentDemands);
-                    populateUserFilter();
-                }, (error) => {
-                    console.error('Error loading demands:', error);
-                    updateConnectionStatus(false);
-                });
-            
-            unsubscribeFunctions.push(unsubscribe);
-        }
-
+    });
+}
         // NEW: Vertical layout for today's demand
         function displayTodayDemand(demands) {
             const today = getToday();
