@@ -878,7 +878,7 @@
             <button class="tab-btn" data-tab="weekly-menu">Weekly Menu</button>
             <button class="tab-btn" data-tab="demand">Demand</button>
             <button class="tab-btn" data-tab="users" id="users-tab" style="display: none;">Users</button>
-            <button class="tab-btn" data-tab="notes">Nots</button>
+            <button class="tab-btn" data-tab="notes">Notes</button>
             <button class="tab-btn" data-tab="data" id="data-tab" style="display: none;">Data</button>
         </div>
         
@@ -1043,6 +1043,10 @@
                         </select>
                     </div>
                     <div class="form-group">
+                        <label for="demand-date">Date</label>
+                        <input type="date" id="demand-date" required>
+                    </div>
+                    <div class="form-group">
                         <label for="demand-users">Users (Multiple)</label>
                         <select id="demand-users" multiple class="multi-select" required>
                             <option value="">Select Users</option>
@@ -1050,10 +1054,6 @@
                         <div id="custom-user-select" class="custom-multi-select">
                             <!-- Custom checkboxes for mobile -->
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="demand-date">Date</label>
-                        <input type="date" id="demand-date" required>
                     </div>
                     <div class="form-group">
                         <label for="demand-menu">Menu</label>
@@ -1401,7 +1401,7 @@
             // Update action buttons visibility
             updateActionButtons();
             
-            // IMPORTANT: Force reload data after login state change
+            // Force reload data after login state change
             setTimeout(() => {
                 loadAllData();
             }, 100);
@@ -1423,7 +1423,7 @@
             // Update action buttons visibility
             updateActionButtons();
             
-            // IMPORTANT: Force reload data after logout state change
+            // Force reload data after logout state change
             setTimeout(() => {
                 loadAllData();
             }, 100);
@@ -1443,10 +1443,6 @@
                 })
                 .then(() => {
                     updateConnectionStatus(true);
-                    // Force data refresh when connection is restored
-                    if (isLoggedIn) {
-                        loadAllData();
-                    }
                 })
                 .catch((error) => {
                     console.error('Connection error:', error);
@@ -2036,55 +2032,40 @@
             });
         });
 
-        // Auto-fill menu based on selected type and date
+        // Auto-fill menu based on selected type and date - FROM WEEKLY MENU ONLY
         document.getElementById('demand-type').addEventListener('change', function() {
-            autoFillMenuField();
+            autoFillMenuFieldFromWeekly();
         });
 
         document.getElementById('demand-date').addEventListener('change', function() {
-            autoFillMenuField();
+            autoFillMenuFieldFromWeekly();
         });
 
-        function autoFillMenuField() {
+        function autoFillMenuFieldFromWeekly() {
             const type = document.getElementById('demand-type').value;
             const date = document.getElementById('demand-date').value;
             const menuField = document.getElementById('demand-menu');
             
-            // First try to get from daily menu
+            // Only auto-fill for breakfast, lunch, dinner types
             if (type && type !== 'other' && date) {
-                const menuForDate = currentMenus.find(menu => menu.date === date);
-                if (menuForDate) {
+                // Get from weekly menu only
+                const dayName = getDayName(date);
+                const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
+                
+                if (dayIndex !== -1 && weeklyMenuFormData.days && weeklyMenuFormData.days[dayIndex]) {
                     switch(type) {
                         case 'breakfast':
-                            menuField.value = menuForDate.breakfast || '';
+                            menuField.value = weeklyMenuFormData.days[dayIndex].breakfast || '';
                             break;
                         case 'lunch':
-                            menuField.value = menuForDate.lunch || '';
+                            menuField.value = weeklyMenuFormData.days[dayIndex].lunch || '';
                             break;
                         case 'dinner':
-                            menuField.value = menuForDate.dinner || '';
+                            menuField.value = weeklyMenuFormData.days[dayIndex].dinner || '';
                             break;
                     }
                 } else {
-                    // If no daily menu, try to get from weekly menu
-                    const dayName = getDayName(date);
-                    const dayIndex = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].indexOf(dayName);
-                    
-                    if (dayIndex !== -1 && weeklyMenuFormData.days && weeklyMenuFormData.days[dayIndex]) {
-                        switch(type) {
-                            case 'breakfast':
-                                menuField.value = weeklyMenuFormData.days[dayIndex].breakfast || '';
-                                break;
-                            case 'lunch':
-                                menuField.value = weeklyMenuFormData.days[dayIndex].lunch || '';
-                                break;
-                            case 'dinner':
-                                menuField.value = weeklyMenuFormData.days[dayIndex].dinner || '';
-                                break;
-                        }
-                    } else {
-                        menuField.value = '';
-                    }
+                    menuField.value = '';
                 }
             } else if (type === 'other') {
                 menuField.value = '';
@@ -2864,33 +2845,6 @@
             
             console.log('App initialization complete');
         };
-
-        // Handle app visibility changes to prevent session issues
-        document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) {
-                // App became visible again, refresh data
-                console.log('App became visible, refreshing data...');
-                monitorConnection();
-                if (isLoggedIn) {
-                    loadAllData();
-                }
-            }
-        });
-
-        // Handle page focus to prevent session issues
-        window.addEventListener('focus', function() {
-            console.log('Window focused, refreshing data...');
-            monitorConnection();
-            if (isLoggedIn) {
-                loadAllData();
-            }
-        });
-
-        // Handle page beforeunload to prevent session issues
-        window.addEventListener('beforeunload', function() {
-            // Save current state
-            localStorage.setItem('app_last_loaded', new Date().toISOString());
-        });
     </script>
 </body>
 </html>
