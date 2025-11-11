@@ -748,6 +748,20 @@
             font-weight: 600;
         }
         
+        /* Weekly Menu Admin Controls */
+        .weekly-menu-admin-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .weekly-menu-admin-controls .btn {
+            flex: 1;
+            min-width: 150px;
+            justify-content: center;
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 480px) {
             .menu-content {
@@ -848,6 +862,14 @@
             .view-toggle-container {
                 width: 100%;
                 justify-content: center;
+            }
+            
+            .weekly-menu-admin-controls {
+                flex-direction: column;
+            }
+            
+            .weekly-menu-admin-controls .btn {
+                min-width: 100%;
             }
         }
         
@@ -1056,6 +1078,19 @@
                         <i class="fas fa-plus"></i> Save Weekly Menu
                     </button>
                 </form>
+                
+                <!-- Weekly Menu Admin Controls -->
+                <div class="weekly-menu-admin-controls">
+                    <button class="btn btn-green" id="copy-to-next-week-btn">
+                        <i class="fas fa-copy"></i> Copy to Next Week
+                    </button>
+                    <button class="btn btn-orange" id="export-weekly-menu-btn">
+                        <i class="fas fa-download"></i> Export Weekly Menu
+                    </button>
+                    <button class="btn btn-yellow" id="import-weekly-menu-btn">
+                        <i class="fas fa-upload"></i> Import Weekly Menu
+                    </button>
+                </div>
             </div>
             
             <div class="weekly-menu-container">
@@ -1302,6 +1337,19 @@
                 </button>
             </div>
             
+            <div class="form-container">
+                <h3>Weekly Menu Backup</h3>
+                <p style="text-align: center;">Export or import weekly menu data as JSON.</p>
+                <div class="weekly-menu-admin-controls" style="margin-top: 10px;">
+                    <button class="btn btn-green" id="export-weekly-menu-data-btn">
+                        <i class="fas fa-download"></i> Export Weekly Menu
+                    </button>
+                    <button class="btn btn-orange" id="import-weekly-menu-data-btn">
+                        <i class="fas fa-upload"></i> Import Weekly Menu
+                    </button>
+                </div>
+            </div>
+            
             <div class="form-container" style="display: none;">
                 <h3>Clear All Data</h3>
                 <p style="text-align: center;">Warning: This will permanently delete all your data.</p>
@@ -1380,6 +1428,27 @@
                     <i class="fas fa-save"></i> Update Demand
                 </button>
             </form>
+        </div>
+    </div>
+
+    <!-- Weekly Menu Import Modal -->
+    <div id="weekly-menu-import-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Import Weekly Menu</h3>
+                <button class="close-btn" id="close-weekly-menu-import-modal">&times;</button>
+            </div>
+            <div class="form-group">
+                <label for="weekly-menu-import-file">Select Weekly Menu JSON File</label>
+                <input type="file" id="weekly-menu-import-file" accept=".json">
+            </div>
+            <div class="form-group">
+                <label for="weekly-menu-import-date">Week Start Date</label>
+                <input type="date" id="weekly-menu-import-date" required>
+            </div>
+            <button id="confirm-weekly-menu-import" class="btn btn-primary" style="width: 100%;">
+                <i class="fas fa-upload"></i> Import Weekly Menu
+            </button>
         </div>
     </div>
 
@@ -1627,6 +1696,13 @@
             return monday.toISOString().split('T')[0];
         }
 
+        // Get next week start date
+        function getNextWeekStartDate(currentWeekStart) {
+            const date = new Date(currentWeekStart);
+            date.setDate(date.getDate() + 7);
+            return date.toISOString().split('T')[0];
+        }
+
         // Get dates for a week
         function getWeekDates(weekStartDate) {
             const dates = [];
@@ -1658,6 +1734,7 @@
         const editMenuModal = document.getElementById('edit-menu-modal');
         const editDemandModal = document.getElementById('edit-demand-modal');
         const loginModal = document.getElementById('login-modal');
+        const weeklyMenuImportModal = document.getElementById('weekly-menu-import-modal');
         
         document.getElementById('close-menu-modal').addEventListener('click', () => {
             editMenuModal.style.display = 'none';
@@ -1665,6 +1742,10 @@
         
         document.getElementById('close-demand-modal').addEventListener('click', () => {
             editDemandModal.style.display = 'none';
+        });
+        
+        document.getElementById('close-weekly-menu-import-modal').addEventListener('click', () => {
+            weeklyMenuImportModal.style.display = 'none';
         });
         
         window.addEventListener('click', (e) => {
@@ -1677,6 +1758,9 @@
             if (e.target === loginModal) {
                 loginModal.style.display = 'none';
                 document.getElementById('login-error').style.display = 'none';
+            }
+            if (e.target === weeklyMenuImportModal) {
+                weeklyMenuImportModal.style.display = 'none';
             }
         });
 
@@ -1926,6 +2010,219 @@
         document.getElementById('next-week').addEventListener('click', () => {
             currentWeekOffset++;
             loadWeeklyMenuData();
+        });
+
+        // Copy to next week functionality
+        document.getElementById('copy-to-next-week-btn').addEventListener('click', () => {
+            if (!isLoggedIn) {
+                alert('Please login to copy weekly menu');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
+            const currentWeekStart = getWeekStartDate(currentWeekOffset);
+            const nextWeekStart = getNextWeekStartDate(currentWeekStart);
+            
+            // Check if current week has data
+            db.collection(COLLECTIONS.WEEKLY_MENU)
+                .where('weekStart', '==', currentWeekStart)
+                .get()
+                .then((querySnapshot) => {
+                    if (!querySnapshot.empty) {
+                        const doc = querySnapshot.docs[0];
+                        const currentWeeklyMenu = doc.data();
+                        
+                        // Create new weekly menu for next week
+                        const nextWeeklyMenu = {
+                            weekStart: nextWeekStart,
+                            days: currentWeeklyMenu.days,
+                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                        };
+                        
+                        // Check if next week already has data
+                        db.collection(COLLECTIONS.WEEKLY_MENU)
+                            .where('weekStart', '==', nextWeekStart)
+                            .get()
+                            .then((nextWeekQuery) => {
+                                if (!nextWeekQuery.empty) {
+                                    // Update existing next week menu
+                                    const nextWeekDoc = nextWeekQuery.docs[0];
+                                    db.collection(COLLECTIONS.WEEKLY_MENU).doc(nextWeekDoc.id).update({
+                                        days: nextWeeklyMenu.days,
+                                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                                    }).then(() => {
+                                        alert('Weekly menu copied to next week successfully!');
+                                        // Navigate to next week
+                                        currentWeekOffset++;
+                                        loadWeeklyMenuData();
+                                    });
+                                } else {
+                                    // Create new next week menu
+                                    db.collection(COLLECTIONS.WEEKLY_MENU).add(nextWeeklyMenu)
+                                        .then(() => {
+                                            alert('Weekly menu copied to next week successfully!');
+                                            // Navigate to next week
+                                            currentWeekOffset++;
+                                            loadWeeklyMenuData();
+                                        });
+                                }
+                            });
+                    } else {
+                        alert('No weekly menu data found for the current week.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error copying weekly menu:', error);
+                    alert('Error copying weekly menu. Please check connection.');
+                });
+        });
+
+        // Export weekly menu functionality
+        document.getElementById('export-weekly-menu-btn').addEventListener('click', () => {
+            if (!isLoggedIn) {
+                alert('Please login to export weekly menu');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
+            const currentWeekStart = getWeekStartDate(currentWeekOffset);
+            
+            // Get current weekly menu data
+            db.collection(COLLECTIONS.WEEKLY_MENU)
+                .where('weekStart', '==', currentWeekStart)
+                .get()
+                .then((querySnapshot) => {
+                    if (!querySnapshot.empty) {
+                        const doc = querySnapshot.docs[0];
+                        const weeklyMenuData = { id: doc.id, ...doc.data() };
+                        
+                        // Create export data
+                        const exportData = {
+                            weeklyMenu: weeklyMenuData,
+                            exportDate: new Date().toISOString(),
+                            weekStart: currentWeekStart
+                        };
+                        
+                        // Create and download JSON file
+                        const dataStr = JSON.stringify(exportData, null, 2);
+                        const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                        const url = URL.createObjectURL(dataBlob);
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = `weekly-menu-${currentWeekStart}.json`;
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(url);
+                        
+                        alert('Weekly menu exported successfully!');
+                    } else {
+                        alert('No weekly menu data found for the current week.');
+                    }
+                })
+                .catch((error) => {
+                    console.error('Error exporting weekly menu:', error);
+                    alert('Error exporting weekly menu. Please check connection.');
+                });
+        });
+
+        // Import weekly menu functionality
+        document.getElementById('import-weekly-menu-btn').addEventListener('click', () => {
+            if (!isLoggedIn) {
+                alert('Please login to import weekly menu');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
+            document.getElementById('weekly-menu-import-modal').style.display = 'flex';
+        });
+
+        // Confirm weekly menu import
+        document.getElementById('confirm-weekly-menu-import').addEventListener('click', () => {
+            const fileInput = document.getElementById('weekly-menu-import-file');
+            const file = fileInput.files[0];
+            const weekStartDate = document.getElementById('weekly-menu-import-date').value;
+            
+            if (!file) {
+                alert('Please select a file to import.');
+                return;
+            }
+            
+            if (!weekStartDate) {
+                alert('Please select a week start date.');
+                return;
+            }
+            
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    const importData = JSON.parse(e.target.result);
+                    
+                    if (!importData.weeklyMenu || !importData.weeklyMenu.days) {
+                        alert('Invalid weekly menu file format.');
+                        return;
+                    }
+                    
+                    const weeklyMenuData = {
+                        weekStart: weekStartDate,
+                        days: importData.weeklyMenu.days,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp()
+                    };
+                    
+                    // Check if weekly menu for this week already exists
+                    db.collection(COLLECTIONS.WEEKLY_MENU)
+                        .where('weekStart', '==', weekStartDate)
+                        .get()
+                        .then((querySnapshot) => {
+                            if (!querySnapshot.empty) {
+                                // Update existing weekly menu
+                                const doc = querySnapshot.docs[0];
+                                db.collection(COLLECTIONS.WEEKLY_MENU).doc(doc.id).update({
+                                    days: weeklyMenuData.days,
+                                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                                }).then(() => {
+                                    alert('Weekly menu imported successfully!');
+                                    document.getElementById('weekly-menu-import-modal').style.display = 'none';
+                                    fileInput.value = '';
+                                    document.getElementById('weekly-menu-import-date').value = '';
+                                    
+                                    // Navigate to the imported week
+                                    const today = getToday();
+                                    const importedWeekStart = new Date(weekStartDate);
+                                    const currentWeekStart = new Date(getWeekStartDate());
+                                    const weekDiff = Math.floor((importedWeekStart - currentWeekStart) / (7 * 24 * 60 * 60 * 1000));
+                                    currentWeekOffset = weekDiff;
+                                    loadWeeklyMenuData();
+                                });
+                            } else {
+                                // Add new weekly menu
+                                db.collection(COLLECTIONS.WEEKLY_MENU).add(weeklyMenuData)
+                                    .then(() => {
+                                        alert('Weekly menu imported successfully!');
+                                        document.getElementById('weekly-menu-import-modal').style.display = 'none';
+                                        fileInput.value = '';
+                                        document.getElementById('weekly-menu-import-date').value = '';
+                                        
+                                        // Navigate to the imported week
+                                        const today = getToday();
+                                        const importedWeekStart = new Date(weekStartDate);
+                                        const currentWeekStart = new Date(getWeekStartDate());
+                                        const weekDiff = Math.floor((importedWeekStart - currentWeekStart) / (7 * 24 * 60 * 60 * 1000));
+                                        currentWeekOffset = weekDiff;
+                                        loadWeeklyMenuData();
+                                    });
+                            }
+                        })
+                        .catch((error) => {
+                            console.error('Error importing weekly menu:', error);
+                            alert('Error importing weekly menu. Please check connection.');
+                        });
+                } catch (error) {
+                    console.error('Error parsing JSON file:', error);
+                    alert('Error parsing JSON file. Please check the file format.');
+                }
+            };
+            reader.readAsText(file);
         });
 
         function loadWeeklyMenuData() {
@@ -2910,6 +3207,12 @@
         document.getElementById('import-btn').addEventListener('click', importData);
         document.getElementById('clear-btn').addEventListener('click', clearAllData);
 
+        // Weekly menu export/import in data section
+        document.getElementById('export-weekly-menu-data-btn').addEventListener('click', exportAllWeeklyMenus);
+        document.getElementById('import-weekly-menu-data-btn').addEventListener('click', () => {
+            document.getElementById('weekly-menu-import-modal').style.display = 'flex';
+        });
+
         async function exportData() {
             if (!isLoggedIn) {
                 alert('Please login to export data');
@@ -2957,6 +3260,48 @@
             } catch (error) {
                 console.error('Error exporting data:', error);
                 alert('Error exporting data: ' + error.message);
+            }
+        }
+
+        async function exportAllWeeklyMenus() {
+            if (!isLoggedIn) {
+                alert('Please login to export weekly menus');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
+            if (!isConnected) {
+                alert('Cannot export data while disconnected from Firebase.');
+                return;
+            }
+            
+            try {
+                // Get all weekly menus
+                const weeklyMenuSnapshot = await db.collection(COLLECTIONS.WEEKLY_MENU)
+                    .orderBy('weekStart', 'desc')
+                    .get();
+                
+                const exportData = {
+                    weeklyMenus: weeklyMenuSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })),
+                    exportDate: new Date().toISOString()
+                };
+                
+                // Create and download JSON file
+                const dataStr = JSON.stringify(exportData, null, 2);
+                const dataBlob = new Blob([dataStr], { type: 'application/json' });
+                const url = URL.createObjectURL(dataBlob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = `weekly-menus-backup-${new Date().toISOString().split('T')[0]}.json`;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+                
+                alert('Weekly menus exported successfully!');
+            } catch (error) {
+                console.error('Error exporting weekly menus:', error);
+                alert('Error exporting weekly menus: ' + error.message);
             }
         }
 
