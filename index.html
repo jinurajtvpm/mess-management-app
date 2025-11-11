@@ -762,6 +762,53 @@
             justify-content: center;
         }
         
+        /* Date Range Controls */
+        .date-range-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: flex-end;
+        }
+        
+        .date-range-group {
+            flex: 1;
+            min-width: 150px;
+        }
+        
+        .bulk-delete-section {
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff9e6;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-yellow);
+        }
+        
+        .bulk-delete-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .delete-confirmation {
+            margin-top: 10px;
+            padding: 10px;
+            background: #fee2e2;
+            border-radius: 6px;
+            border-left: 4px solid var(--accent-red);
+            display: none;
+        }
+        
+        .delete-confirmation p {
+            margin-bottom: 10px;
+        }
+        
+        .delete-confirmation-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
         /* Mobile optimizations */
         @media (max-width: 480px) {
             .menu-content {
@@ -869,6 +916,30 @@
             }
             
             .weekly-menu-admin-controls .btn {
+                min-width: 100%;
+            }
+            
+            .date-range-controls {
+                flex-direction: column;
+            }
+            
+            .date-range-group {
+                min-width: 100%;
+            }
+            
+            .bulk-delete-actions {
+                flex-direction: column;
+            }
+            
+            .bulk-delete-actions .btn {
+                min-width: 100%;
+            }
+            
+            .delete-confirmation-actions {
+                flex-direction: column;
+            }
+            
+            .delete-confirmation-actions .btn {
                 min-width: 100%;
             }
         }
@@ -1090,6 +1161,10 @@
                     <button class="btn btn-yellow" id="import-weekly-menu-btn">
                         <i class="fas fa-upload"></i> Import Weekly Menu
                     </button>
+                    <!-- NEW: Delete Current Week Menu Button -->
+                    <button class="btn btn-red" id="delete-current-week-btn">
+                        <i class="fas fa-trash"></i> Delete Current Week
+                    </button>
                 </div>
             </div>
             
@@ -1114,42 +1189,7 @@
         <div id="demand" class="tab-content">
             <h2 class="section-title">Demand</h2>
             
-            <!-- Controls Row -->
-            <div class="demand-controls">
-                <!-- Date Selector -->
-                <div class="date-selector">
-                    <label for="demand-view-date">Date:</label>
-                    <input type="date" id="demand-view-date">
-                </div>
-                
-                <!-- View Toggle -->
-                <div class="view-toggle-container">
-                    <button class="view-toggle-btn active" id="user-view-btn">User View</button>
-                    <button class="view-toggle-btn" id="type-view-btn">Type View</button>
-                </div>
-            </div>
-            
-            <!-- Demand Title -->
-            <div class="demand-title" id="demand-date-title">Today's Demand</div>
-            
-            <!-- Today's Demand Tile -->
-            <div id="today-demand-tile">
-                <!-- User-wise view -->
-                <div id="user-wise-view">
-                    <div id="today-demand-content" class="user-tiles">
-                        <!-- Content will be populated dynamically -->
-                    </div>
-                </div>
-                
-                <!-- Type-wise view -->
-                <div id="type-wise-view" style="display: none;">
-                    <div id="today-demand-type-content" class="user-tiles">
-                        <!-- Content will be populated dynamically -->
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Admin-only form -->
+            <!-- Admin-only form - MOVED TO TOP -->
             <div class="form-container" id="demand-form-container" style="display: none;">
                 <h3>Add Demand</h3>
                 <form id="demand-form">
@@ -1187,6 +1227,41 @@
                 </form>
             </div>
             
+            <!-- Controls Row -->
+            <div class="demand-controls">
+                <!-- Date Selector -->
+                <div class="date-selector">
+                    <label for="demand-view-date">Date:</label>
+                    <input type="date" id="demand-view-date">
+                </div>
+                
+                <!-- View Toggle -->
+                <div class="view-toggle-container">
+                    <button class="view-toggle-btn active" id="user-view-btn">User View</button>
+                    <button class="view-toggle-btn" id="type-view-btn">Type View</button>
+                </div>
+            </div>
+            
+            <!-- Demand Title -->
+            <div class="demand-title" id="demand-date-title">Today's Demand</div>
+            
+            <!-- Today's Demand Tile -->
+            <div id="today-demand-tile">
+                <!-- User-wise view -->
+                <div id="user-wise-view">
+                    <div id="today-demand-content" class="user-tiles">
+                        <!-- Content will be populated dynamically -->
+                    </div>
+                </div>
+                
+                <!-- Type-wise view -->
+                <div id="type-wise-view" style="display: none;">
+                    <div id="today-demand-type-content" class="user-tiles">
+                        <!-- Content will be populated dynamically -->
+                    </div>
+                </div>
+            </div>
+            
             <!-- Admin-only history -->
             <div class="history-data" id="demand-history-container" style="display: none;">
                 <h3>Demand History</h3>
@@ -1215,9 +1290,54 @@
                     </div>
                 </div>
                 
+                <!-- NEW: Date Range Selection and Bulk Delete -->
+                <div class="bulk-delete-section">
+                    <h4>Bulk Delete by Date Range</h4>
+                    <div class="date-range-controls">
+                        <div class="date-range-group">
+                            <label for="start-date">Start Date</label>
+                            <input type="date" id="start-date">
+                        </div>
+                        <div class="date-range-group">
+                            <label for="end-date">End Date</label>
+                            <input type="date" id="end-date">
+                        </div>
+                        <div class="date-range-group">
+                            <button class="btn btn-yellow" id="filter-by-range-btn">
+                                <i class="fas fa-filter"></i> Filter by Range
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="bulk-delete-actions">
+                        <button class="btn btn-red" id="delete-range-btn">
+                            <i class="fas fa-trash"></i> Delete Selected Range
+                        </button>
+                        <button class="btn btn-orange" id="select-all-range-btn">
+                            <i class="fas fa-check-square"></i> Select All in Range
+                        </button>
+                        <button class="btn btn-primary" id="clear-selection-btn">
+                            <i class="fas fa-times"></i> Clear Selection
+                        </button>
+                    </div>
+                    
+                    <div class="delete-confirmation" id="delete-confirmation">
+                        <p>Are you sure you want to delete <span id="delete-count">0</span> demand entries? This action cannot be undone.</p>
+                        <div class="delete-confirmation-actions">
+                            <button class="btn btn-red" id="confirm-delete-btn">
+                                <i class="fas fa-trash"></i> Confirm Delete
+                            </button>
+                            <button class="btn btn-primary" id="cancel-delete-btn">
+                                <i class="fas fa-times"></i> Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
                 <table id="demand-history">
                     <thead>
                         <tr>
+                            <th><input type="checkbox" id="select-all-checkbox"></th>
                             <th>Date</th>
                             <th>User</th>
                             <th>Type</th>
@@ -1593,25 +1713,25 @@
         }
 
         function updateActionButtons() {
-    const isVisible = isLoggedIn ? '' : 'none';
-    
-    // Update table headers
-    document.getElementById('menu-history-action-header').style.display = isVisible;
-    document.getElementById('demand-history-action-header').style.display = isVisible;
-    
-    // Update action cells
-    const actionCells = document.querySelectorAll('.vertical-demand-table .action-cell');
-    actionCells.forEach(cell => {
-        cell.style.display = isVisible;
-        
-        // Ensure buttons stay inline
-        const buttons = cell.querySelectorAll('button');
-        buttons.forEach(button => {
-            button.style.display = 'inline-block';
-            button.style.marginRight = '5px';
-        });
-    });
-}
+            const isVisible = isLoggedIn ? '' : 'none';
+            
+            // Update table headers
+            document.getElementById('menu-history-action-header').style.display = isVisible;
+            document.getElementById('demand-history-action-header').style.display = isVisible;
+            
+            // Update action cells
+            const actionCells = document.querySelectorAll('.vertical-demand-table .action-cell');
+            actionCells.forEach(cell => {
+                cell.style.display = isVisible;
+                
+                // Ensure buttons stay inline
+                const buttons = cell.querySelectorAll('button');
+                buttons.forEach(button => {
+                    button.style.display = 'inline-block';
+                    button.style.marginRight = '5px';
+                });
+            });
+        }
 
         // Connection monitoring
         function monitorConnection() {
@@ -2010,6 +2130,46 @@
         document.getElementById('next-week').addEventListener('click', () => {
             currentWeekOffset++;
             loadWeeklyMenuData();
+        });
+
+        // NEW: Delete Current Week Menu Functionality
+        document.getElementById('delete-current-week-btn').addEventListener('click', () => {
+            if (!isLoggedIn) {
+                alert('Please login to delete weekly menu');
+                document.getElementById('open-login-btn').click();
+                return;
+            }
+            
+            const currentWeekStart = getWeekStartDate(currentWeekOffset);
+            
+            if (confirm(`Are you sure you want to delete the weekly menu for ${formatWeekTitle(currentWeekStart)}?`)) {
+                // Find and delete the weekly menu for the current week
+                db.collection(COLLECTIONS.WEEKLY_MENU)
+                    .where('weekStart', '==', currentWeekStart)
+                    .get()
+                    .then((querySnapshot) => {
+                        if (!querySnapshot.empty) {
+                            const batch = db.batch();
+                            querySnapshot.forEach((doc) => {
+                                batch.delete(doc.ref);
+                            });
+                            
+                            return batch.commit();
+                        } else {
+                            alert('No weekly menu found for the current week.');
+                        }
+                    })
+                    .then(() => {
+                        console.log('Weekly menu deleted successfully');
+                        alert('Weekly menu deleted successfully!');
+                        // Reload the weekly menu data to show empty state
+                        loadWeeklyMenuData();
+                    })
+                    .catch((error) => {
+                        console.error('Error deleting weekly menu:', error);
+                        alert('Error deleting weekly menu. Please check connection.');
+                    });
+            }
         });
 
         // Copy to next week functionality
@@ -2836,28 +2996,143 @@
             });
         }
 
+        // NEW: Date Range Selection and Bulk Delete Functionality
+        document.getElementById('filter-by-range-btn').addEventListener('click', () => {
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+            
+            if (!startDate || !endDate) {
+                alert('Please select both start and end dates.');
+                return;
+            }
+            
+            if (startDate > endDate) {
+                alert('Start date cannot be after end date.');
+                return;
+            }
+            
+            // Filter demands by date range
+            const filteredDemands = currentDemands.filter(demand => {
+                return demand.date >= startDate && demand.date <= endDate;
+            });
+            
+            displayDemandHistory(filteredDemands);
+            updateBulkDeleteInfo();
+        });
+
+        document.getElementById('select-all-range-btn').addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('#demand-history-body .demand-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = true;
+            });
+            document.getElementById('select-all-checkbox').checked = true;
+            updateBulkDeleteInfo();
+        });
+
+        document.getElementById('clear-selection-btn').addEventListener('click', () => {
+            const checkboxes = document.querySelectorAll('#demand-history-body .demand-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = false;
+            });
+            document.getElementById('select-all-checkbox').checked = false;
+            updateBulkDeleteInfo();
+        });
+
+        document.getElementById('select-all-checkbox').addEventListener('change', function() {
+            const checkboxes = document.querySelectorAll('#demand-history-body .demand-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = this.checked;
+            });
+            updateBulkDeleteInfo();
+        });
+
+        document.getElementById('delete-range-btn').addEventListener('click', () => {
+            const selectedCount = document.querySelectorAll('#demand-history-body .demand-checkbox:checked').length;
+            
+            if (selectedCount === 0) {
+                alert('Please select at least one demand entry to delete.');
+                return;
+            }
+            
+            document.getElementById('delete-count').textContent = selectedCount;
+            document.getElementById('delete-confirmation').style.display = 'block';
+        });
+
+        document.getElementById('cancel-delete-btn').addEventListener('click', () => {
+            document.getElementById('delete-confirmation').style.display = 'none';
+        });
+
+        document.getElementById('confirm-delete-btn').addEventListener('click', () => {
+            const selectedCheckboxes = document.querySelectorAll('#demand-history-body .demand-checkbox:checked');
+            const idsToDelete = Array.from(selectedCheckboxes).map(checkbox => checkbox.dataset.id);
+            
+            if (idsToDelete.length === 0) {
+                alert('No demands selected for deletion.');
+                return;
+            }
+            
+            // Delete selected demands
+            const batch = db.batch();
+            idsToDelete.forEach(id => {
+                const docRef = db.collection(COLLECTIONS.DEMAND).doc(id);
+                batch.delete(docRef);
+            });
+            
+            batch.commit()
+                .then(() => {
+                    console.log(`${idsToDelete.length} demand entries deleted successfully`);
+                    alert(`${idsToDelete.length} demand entries deleted successfully!`);
+                    document.getElementById('delete-confirmation').style.display = 'none';
+                    
+                    // Clear date range filters and reset view
+                    document.getElementById('start-date').value = '';
+                    document.getElementById('end-date').value = '';
+                    document.getElementById('select-all-checkbox').checked = false;
+                    
+                    // The real-time listener will automatically update the view
+                })
+                .catch((error) => {
+                    console.error('Error deleting demand entries:', error);
+                    alert('Error deleting demand entries. Please check connection.');
+                });
+        });
+
+        function updateBulkDeleteInfo() {
+            const selectedCount = document.querySelectorAll('#demand-history-body .demand-checkbox:checked').length;
+            const deleteBtn = document.getElementById('delete-range-btn');
+            
+            if (selectedCount > 0) {
+                deleteBtn.innerHTML = `<i class="fas fa-trash"></i> Delete Selected (${selectedCount})`;
+            } else {
+                deleteBtn.innerHTML = `<i class="fas fa-trash"></i> Delete Selected Range`;
+            }
+        }
+
+        // Updated displayDemandHistory function to include checkboxes
         function displayDemandHistory(demands) {
             const historyBody = document.getElementById('demand-history-body');
             const userFilter = document.getElementById('user-filter').value;
             const dateFilter = document.getElementById('date-filter').value;
             const typeFilter = document.getElementById('type-filter').value;
             
-            // Filter demands based on selected filters
-            let filteredDemands = demands.filter(demand => {
-                const matchesUser = !userFilter || demand.user === userFilter;
-                const matchesDate = !dateFilter || demand.date === dateFilter;
-                const matchesType = !typeFilter || demand.type === typeFilter;
-                return matchesUser && matchesDate && matchesType;
-            });
+            // If no specific demands passed, use the filtered currentDemands
+            if (!demands) {
+                demands = currentDemands.filter(demand => {
+                    const matchesUser = !userFilter || demand.user === userFilter;
+                    const matchesDate = !dateFilter || demand.date === dateFilter;
+                    const matchesType = !typeFilter || demand.type === typeFilter;
+                    return matchesUser && matchesDate && matchesType;
+                });
+            }
             
             historyBody.innerHTML = '';
             
-            if (filteredDemands.length === 0) {
-                historyBody.innerHTML = '<tr><td colspan="6" style="text-align:center;">No demand history found.</td></tr>';
+            if (demands.length === 0) {
+                historyBody.innerHTML = '<tr><td colspan="7" style="text-align:center;">No demand history found.</td></tr>';
                 return;
             }
             
-            filteredDemands.forEach(demand => {
+            demands.forEach(demand => {
                 const actionButtons = isLoggedIn ? 
                     `<td class="action-cell">
                         <button class="icon-btn edit-btn" onclick="openEditDemandModal('${demand.id}')" title="Edit">
@@ -2871,6 +3146,9 @@
                 
                 const row = document.createElement('tr');
                 row.innerHTML = `
+                    <td>
+                        <input type="checkbox" class="demand-checkbox" data-id="${demand.id}">
+                    </td>
                     <td>${formatDate(demand.date)}</td>
                     <td>${demand.user}</td>
                     <td>${demand.type}</td>
@@ -2880,20 +3158,13 @@
                 `;
                 historyBody.appendChild(row);
             });
+            
+            // Add event listeners to checkboxes
+            const checkboxes = document.querySelectorAll('#demand-history-body .demand-checkbox');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', updateBulkDeleteInfo);
+            });
         }
-
-        // Add event listeners for filter controls
-        document.getElementById('user-filter').addEventListener('change', () => {
-            displayDemandHistory(currentDemands);
-        });
-        
-        document.getElementById('date-filter').addEventListener('change', () => {
-            displayDemandHistory(currentDemands);
-        });
-        
-        document.getElementById('type-filter').addEventListener('change', () => {
-            displayDemandHistory(currentDemands);
-        });
 
         function openEditDemandModal(id) {
             if (!isLoggedIn) {
@@ -3449,6 +3720,12 @@
             document.getElementById('note-date').value = today;
             document.getElementById('demand-view-date').value = today;
             currentDemandViewDate = today;
+            
+            // Set default date range (last 7 days)
+            const lastWeek = new Date();
+            lastWeek.setDate(lastWeek.getDate() - 7);
+            document.getElementById('start-date').value = lastWeek.toISOString().split('T')[0];
+            document.getElementById('end-date').value = today;
             
             // Check if user was previously logged in
             checkLoginStatus();
